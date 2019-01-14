@@ -1,11 +1,11 @@
 package com.ucp.business.data;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
 public class Beach {
+    @Getter
+    @Setter
+    private String name;
 }
