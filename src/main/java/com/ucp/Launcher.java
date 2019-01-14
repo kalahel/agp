@@ -1,8 +1,8 @@
 package com.ucp;
 
 
-import com.ucp.bussiness.data.PlaceHolderData;
-import com.ucp.bussiness.factories.PlaceHolderFactory;
+import com.ucp.business.data.PlaceHolderData;
+import com.ucp.business.factories.PlaceHolderFactory;
 import com.ucp.configuration.SpringConfiguration;
 import com.ucp.hibernate.DBConnection;
 import com.ucp.hibernate.PlaceHolderDataStorable;

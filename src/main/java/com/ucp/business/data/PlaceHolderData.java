@@ -1,8 +1,6 @@
-package com.ucp.bussiness.data;
+package com.ucp.business.data;
 
 import javax.inject.Named;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 
 @Named

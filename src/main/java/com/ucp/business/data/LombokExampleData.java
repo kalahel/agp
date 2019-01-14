@@ -1,4 +1,4 @@
-package com.ucp.bussiness.data;
+package com.ucp.business.data;
 
 import lombok.Data;
 

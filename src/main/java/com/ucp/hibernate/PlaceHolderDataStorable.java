@@ -1,11 +1,10 @@
 package com.ucp.hibernate;
 
-import com.ucp.bussiness.data.PlaceHolderData;
+import com.ucp.business.data.PlaceHolderData;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 public class PlaceHolderDataStorable {

@@ -1,6 +1,6 @@
-package com.ucp.bussiness.factories;
+package com.ucp.business.factories;
 
-import com.ucp.bussiness.data.PlaceHolderData;
+import com.ucp.business.data.PlaceHolderData;
 
 import javax.inject.Named;
 
