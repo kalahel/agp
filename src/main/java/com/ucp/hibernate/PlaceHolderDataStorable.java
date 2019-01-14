@@ -1,6 +1,6 @@
 package com.ucp.hibernate;
 
-import com.ucp.business.data.PlaceHolderData;
+import com.ucp.business.data.examples.PlaceHolderData;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

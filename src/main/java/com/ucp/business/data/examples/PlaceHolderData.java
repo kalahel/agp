@@ -1,4 +1,4 @@
-package com.ucp.business.data;
+package com.ucp.business.data.examples;
 
 import javax.inject.Named;
 
