@@ -14,11 +14,17 @@ public class DataTest {
         touristicSite_1.setCoordinates(new Coordinates(123,154));
         touristicSite_1.setDescription("toursitic desc");
 
+        Coordinates coordinates_2 = new Coordinates();
+        coordinates_2.setX_axis(21);
+        coordinates_2.setY_axis(112);
+        TouristicSite touristicSite_2 = new ActivityPlace("another touristic desct", coordinates_1);
+
 
         System.out.println(transport_1.getPrice());
         System.out.println(beach_1.getName());
         System.out.println(hotel_1.toString());
         System.out.println(touristicSite_1.toString());
+        System.out.println(touristicSite_2.toString());
 
     }
 }
