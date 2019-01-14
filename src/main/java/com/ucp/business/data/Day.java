@@ -9,4 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 public class Day {
+    //Can be null if no excursion has been planned on this day.
+    private Excursion excursion;
 }
