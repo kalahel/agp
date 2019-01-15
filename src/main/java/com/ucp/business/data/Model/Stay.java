@@ -11,4 +11,7 @@ import java.util.List;
 public class Stay {
     private double price;
     private List<Day> daysList;
+    public void addDay(Day day){
+        daysList.add(day);
+    }
 }
