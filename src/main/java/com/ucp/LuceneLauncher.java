@@ -1,61 +1,39 @@
 package com.ucp;
 
-import java.io.*;
-import java.nio.file.*;
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
+import org.apache.lucene.document.TextField;
+import org.apache.lucene.index.IndexWriter;
+import org.apache.lucene.index.IndexWriterConfig;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
 
-import org.apache.lucene.analysis.*;
-import org.apache.lucene.analysis.standard.*;
-import org.apache.lucene.document.*;
-import org.apache.lucene.index.*;
-import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.search.*;
-import org.apache.lucene.store.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 
 public class LuceneLauncher {
     public final static String TEXT_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\texts";
     public final static String INDEX_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\index";
 
     public static void main(String[] args) {
-        int MAX_RESULTS = 100; //nombre max de réponses retournées
         try {
             LuceneLauncher.indexDocuments();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        // 1. Specifier l'analyseur pour le texte.
-        //    Le même analyseur est utilisé pour l'indexation et la recherche
-        Analyzer analyseur = new StandardAnalyzer();
-
-        // 2. Creation de l'index
-//	    Directory index = new RAMDirectory();  //création index en mémoire
-        Path indexpath = FileSystems.getDefault().getPath("C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\index"); //localisation index
+        LuceneIterator luceneIterator = new LuceneIterator();
         try {
-            Directory index = FSDirectory.open(indexpath);  //création index sur disque
-
-            // 4. Interroger l'index
-            DirectoryReader ireader = DirectoryReader.open(index);
-            IndexSearcher searcher = new IndexSearcher(ireader); //l'objet qui fait la recherche dans l'index
-            String reqstr = "ouvrier zola femme mine";
-
-            //Parsing de la requete en un objet Query
-            //  "contenu" est le champ interrogé par defaut si aucun champ n'est precisé
-            QueryParser qp = new QueryParser("contenu", analyseur);
-            Query req = qp.parse(reqstr);
-
-            TopDocs resultats = searcher.search(req, MAX_RESULTS); //recherche
-
-            // 6. Affichage resultats
-            System.out.println(resultats.totalHits + " documents correspondent");
-            for (int i = 0; i < resultats.scoreDocs.length; i++) {
-                int docId = resultats.scoreDocs[i].doc;
-                Document d = searcher.doc(docId);
-                System.out.println(d.get("nom") + ": score " + resultats.scoreDocs[i].score);
-            }
-
-            // fermeture seulement quand il n'y a plus besoin d'acceder aux resultats
-            ireader.close();
-        } catch (Exception e) {
+            luceneIterator.init("homme men hombre");
+            while (luceneIterator.hasNext())
+                System.out.println(luceneIterator.next().toString());
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
 
