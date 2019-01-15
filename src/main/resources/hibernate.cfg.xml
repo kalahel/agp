@@ -15,8 +15,12 @@
         <property name="hibernate.connection.isolation">2</property>
         <property name="hibernate.show_sql">true</property>
 
-        <!-- Automatic table creation -->
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <!-- Automatic table creation but destroy previous data -->
+        <!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
+
+
+        <!-- update previous data -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
     </session-factory>
 </hibernate-configuration>

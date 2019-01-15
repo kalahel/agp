@@ -1,6 +1,7 @@
 package com.ucp;
 
 import com.ucp.business.data.Model.HistoricPlace;
+import com.ucp.business.data.Model.TouristicSite;
 import com.ucp.dao.HistoricPlaceDao;
 import com.ucp.dao.TouristicSiteDao;
 import com.ucp.hibernate.DBConnection;
@@ -33,6 +34,13 @@ public class SqlLauncher {
         transaction.commit();
         session.close();
 
+        // Iterator example
+        SqlIterator sqlIterator = new SqlIterator();
+        sqlIterator.init("where description='Montagne'");
+        while (sqlIterator.hasNext()){
+            TouristicSiteDao touristicSite = sqlIterator.next();
+            System.out.println(touristicSite.getDescription());
+        }
 
     }
 }

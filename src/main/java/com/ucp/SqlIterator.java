@@ -27,7 +27,8 @@ public class SqlIterator {
         DBConnection dbConnection = new DBConnection();
         Session session = dbConnection.getSessionFactory().getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        this.results = session.createSQLQuery("SELECT * FROM `TouristicSiteDao` " + whereCondition).addEntity(TouristicSiteDao.class).list();
+        this.results = session.createSQLQuery("SELECT * FROM touristicsitedao " + whereCondition).addEntity(TouristicSiteDao.class).list();
+        this.numberOfResult = results.size();
         transaction.commit();
         session.close();
     }
