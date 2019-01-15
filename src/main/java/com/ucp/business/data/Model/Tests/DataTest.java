@@ -1,4 +1,6 @@
-package com.ucp.business.data.Model;
+package com.ucp.business.data.Model.Tests;
+
+import com.ucp.business.data.Model.*;
 
 public class DataTest {
 
