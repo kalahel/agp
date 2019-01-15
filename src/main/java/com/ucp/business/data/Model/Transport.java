@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public abstract class Transport {
     protected double price;
+    protected double comfort;
 }

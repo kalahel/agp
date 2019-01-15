@@ -12,7 +12,7 @@ public class DataTest {
         Beach beach_1 = new Beach("Plage 1");
         beach_1.setName("Plage 1 Rename");
 
-        Hotel hotel_1 = new Hotel(1000, coordinates_1, beach_1);
+        Hotel hotel_1 = new Hotel(1000, coordinates_1, beach_1, 30);
         TouristicSite touristicSite_1 = new ActivityPlace();
         touristicSite_1.setCoordinates(new Coordinates(123,154));
         touristicSite_1.setDescription("touristic desc");
@@ -20,7 +20,7 @@ public class DataTest {
         Coordinates coordinates_2 = new Coordinates();
         coordinates_2.setX_axis(21);
         coordinates_2.setY_axis(112);
-        TouristicSite touristicSite_2 = new ActivityPlace("another touristic desc", coordinates_1);
+        TouristicSite touristicSite_2 = new ActivityPlace("another touristic desc", coordinates_1,10);
 
         //Returns the euclidean distance between coordinates_1 and coordinates_2
         double distance_1_to_2 = coordinates_2.getDistance(coordinates_1);

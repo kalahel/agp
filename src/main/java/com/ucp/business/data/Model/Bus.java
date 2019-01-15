@@ -9,7 +9,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class Bus extends Transport {
-    public Bus(double price){
-        super(price);
+    public Bus(double price, double comfort){
+        super(price, comfort);
     }
 }

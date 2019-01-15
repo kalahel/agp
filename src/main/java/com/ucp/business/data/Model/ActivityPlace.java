@@ -7,7 +7,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class ActivityPlace extends TouristicSite{
-    public ActivityPlace(String desc, Coordinates coord){
-        super(desc, coord);
+    public ActivityPlace(String desc, Coordinates coord, double comfort){
+        super(desc, coord, comfort);
     }
 }
