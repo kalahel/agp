@@ -1,5 +1,6 @@
 package com.ucp.business.data;
 
+import com.ucp.business.data.Model.Coordinates;
 import org.junit.*;
 
 import static org.junit.Assert.*;

@@ -2,16 +2,12 @@ package com.ucp;
 
 import com.ucp.dao.TouristicSiteDao;
 import com.ucp.hibernate.DBConnection;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
 public class SqlIterator {
-    final static Logger logger = LogManager.getLogger(SqlIterator.class);
-
     private int currentIndex;
     private int numberOfResult;
     private List<TouristicSiteDao> results;
