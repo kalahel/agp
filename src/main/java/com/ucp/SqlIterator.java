@@ -7,7 +7,6 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.io.IOException;
 import java.util.List;
 
 public class SqlIterator {
@@ -23,12 +22,16 @@ public class SqlIterator {
         this.results = null;
     }
 
-    public void init() {
+    /**
+     * Initialize list of touristic site
+     * @param whereCondition Where condition, must be started by "with"
+     */
+    public void init(String whereCondition) {
         // TODO ADJUST WITHOUT LOADING ALL THE DATA
         DBConnection dbConnection = new DBConnection();
         Session session = dbConnection.getSessionFactory().getCurrentSession();
         Transaction transaction = session.beginTransaction();
-        this.results = session.createSQLQuery("SELECT * FROM `placeholderdatastorable` ").addEntity(TouristicSiteDao.class).list();
+        this.results = session.createSQLQuery("SELECT * FROM `TouristicSiteDao` " + whereCondition).addEntity(TouristicSiteDao.class).list();
         transaction.commit();
         session.close();
     }
