@@ -1,8 +1,6 @@
 package com.ucp.hibernate;
 
-import com.ucp.dao.ActivityPlaceDao;
-import com.ucp.dao.HistoricPlaceDao;
-import com.ucp.dao.TouristicSiteDao;
+import com.ucp.dao.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
@@ -33,6 +31,10 @@ public class DBConnection {
                 .addAnnotatedClass(TouristicSiteDao.class)
                 .addAnnotatedClass(ActivityPlaceDao.class)
                 .addAnnotatedClass(HistoricPlaceDao.class)
+                .addAnnotatedClass(TransportDao.class)
+                .addAnnotatedClass(BusDao.class)
+                .addAnnotatedClass(BoatDao.class)
+                .addAnnotatedClass(HotelDao.class)
                 .configure();
 
         Metadata metadata = new MetadataSources(standardRegistry)
@@ -40,6 +42,10 @@ public class DBConnection {
                 .addAnnotatedClass(TouristicSiteDao.class)
                 .addAnnotatedClass(ActivityPlaceDao.class)
                 .addAnnotatedClass(HistoricPlaceDao.class)
+                .addAnnotatedClass(TransportDao.class)
+                .addAnnotatedClass(BusDao.class)
+                .addAnnotatedClass(BoatDao.class)
+                .addAnnotatedClass(HotelDao.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build();
