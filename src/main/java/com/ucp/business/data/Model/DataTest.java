@@ -1,4 +1,4 @@
-package com.ucp.business.data;
+package com.ucp.business.data.Model;
 
 public class DataTest {
 
@@ -13,13 +13,14 @@ public class DataTest {
         Hotel hotel_1 = new Hotel(1000, coordinates_1, beach_1);
         TouristicSite touristicSite_1 = new ActivityPlace();
         touristicSite_1.setCoordinates(new Coordinates(123,154));
-        touristicSite_1.setDescription("toursitic desc");
+        touristicSite_1.setDescription("touristic desc");
 
         Coordinates coordinates_2 = new Coordinates();
         coordinates_2.setX_axis(21);
         coordinates_2.setY_axis(112);
         TouristicSite touristicSite_2 = new ActivityPlace("another touristic desc", coordinates_1);
 
+        //Returns the euclidean distance between coordinates_1 and coordinates_2
         double distance_1_to_2 = coordinates_2.getDistance(coordinates_1);
 
         System.out.println(transport_1.getPrice());
@@ -32,6 +33,7 @@ public class DataTest {
         System.out.println(coordinates_2.toString());
         System.out.println(distance_1_to_2);
 
+        //Creating coordinates with real gps axis. The two points have been picked up in Massy, Ile de France.
         Coordinates startingPosition = new Coordinates(48.724755,  2.268383);
         Coordinates arrivalPosition = new Coordinates(48.726404,  2.271548);
 
@@ -41,8 +43,5 @@ public class DataTest {
         double distance_2 = startingPosition.getDistanceFromGeoCoordinates(arrivalPosition);
         System.out.println("Distance 1 = "+distance_1);
         System.out.println("Distance 1 = "+distance_2);
-
-
-
     }
 }
