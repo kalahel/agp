@@ -1,7 +1,5 @@
 package com.ucp;
 
-import com.ucp.business.data.Model.HistoricPlace;
-import com.ucp.business.data.Model.TouristicSite;
 import com.ucp.dao.HistoricPlaceDao;
 import com.ucp.dao.TouristicSiteDao;
 import com.ucp.hibernate.DBConnection;
