@@ -13,6 +13,8 @@ import org.hibernate.Transaction;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.List;
+
 public class Launcher {
     final static Logger logger = LogManager.getLogger(Launcher.class);
 
@@ -29,7 +31,6 @@ public class Launcher {
         DBConnection dbConnection = new DBConnection();
         Session session = dbConnection.getSessionFactory().getCurrentSession();
 
-
         PlaceHolderData placeHolderData = placeHolderFactory.createData("Manos", 9001);
         PlaceHolderDataStorable placeHolderDataStorable = new PlaceHolderDataStorable();
         placeHolderDataStorable.setAll(placeHolderData);
@@ -38,6 +39,17 @@ public class Launcher {
         Transaction transaction = session.beginTransaction();
         session.persist(placeHolderDataStorable);
         transaction.commit();
+
+        /** **/
+        session = dbConnection.getSessionFactory().getCurrentSession();
+        transaction = session.beginTransaction();
+        List<PlaceHolderDataStorable> result = session.createSQLQuery("SELECT * FROM `placeholderdatastorable` ").addEntity(PlaceHolderDataStorable.class).list();
+        for (PlaceHolderDataStorable currentResult : result) {
+            System.out.println(currentResult.toString());
+        }
+        transaction.commit();
+        /** **/
+
         session.close();
     }
 }

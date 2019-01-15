@@ -18,6 +18,8 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
 public class LuceneLauncher {
+    // TODO CHANGE WITH CORRECT FILES
+    // TODO MAKE IT RELATIVE
     public final static String TEXT_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\texts";
     public final static String INDEX_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\index";
 

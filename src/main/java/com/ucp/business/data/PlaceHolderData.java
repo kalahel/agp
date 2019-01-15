@@ -1,9 +1,12 @@
 package com.ucp.business.data;
 
+import lombok.Data;
+
 import javax.inject.Named;
 
 
 @Named
+@Data
 public class PlaceHolderData {
     private String holderName;
     private int holderValue;
