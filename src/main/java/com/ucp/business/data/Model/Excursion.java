@@ -53,8 +53,13 @@ public class Excursion {
         //FIXME WRONG RESULT
         public ExcursionBuilder  computePrice(){
             double prix = this.hotel.getPrice();
-            for (Transport t : this.transports) prix = prix + t.getPrice();
+            System.out.println("    Prix de l'hotel : "+prix);
+            for (Transport t : this.transports){
+                prix = prix + t.getPrice();
+                System.out.println("        prix du transport" +t.getPrice());
+            }
             this.excursionPrice = prix;
+            System.out.print("      prix total = " +prix);
             return this;
         }
     }

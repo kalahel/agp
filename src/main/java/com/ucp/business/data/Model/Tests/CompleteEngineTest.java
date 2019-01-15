@@ -69,7 +69,7 @@ public class CompleteEngineTest {
         //FIXME WRONG RESULT
         Stay stay = Stay.builder()
                 .setDays(day_1, day_2, day_3)
-                .hotel(FallingWatersVacationVilla)
+                .hotel(SeaMountainCondo)
                 .computePrice()
                 .build();
         System.out.println(stay.toString());
