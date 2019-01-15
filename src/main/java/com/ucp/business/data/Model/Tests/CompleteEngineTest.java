@@ -40,12 +40,38 @@ public class CompleteEngineTest {
         Transport boat_2 = new Boat(25);
         Transport boat_3 = new Boat(30);
 
-        Stay stay = Stay.builder().build();
-        List<Day> daysList= new ArrayList<>();
-
         //TODO DEVELOP
+        Day day_1 = new Day(Excursion.builder()
+                .setTransports(boat_1, boat_1)
+                .setTouristicSites(KailuaKona)
+                .hotel(SeaMountainCondo)
+                .comfort(NULL)
+                .computePrice()
+                .build());
+
+        Day day_2 = new Day();
+
+        Day day_3 = new Day(Excursion.builder()
+                .setTransports(bus_1, bus_2, boat_1, bus_3)
+                .setTouristicSites(VolcanoMaunaLoa, volcanoKilauea, MookiniHeiau)
+                .hotel(SeaMountainCondo)
+                .comfort(NULL)
+                .computePrice()
+                .build());
+
+
         //Day day_1 = new Day(new Excursion(NULL, NULL, SeaMountainCondo, transportsDay_1, touristicSitesDay_1).setTouristicSites(VolcanoMaunaLoa);
         //day_1.getExcursion().computePrice();
-        //System.out.println(day_1.toString());
+        System.out.println(day_1.toString());
+        System.out.println(day_2.toString());
+        System.out.println(day_3.toString());
+
+        //FIXME WRONG RESULT
+        Stay stay = Stay.builder()
+                .setDays(day_1, day_2, day_3)
+                .hotel(FallingWatersVacationVilla)
+                .computePrice()
+                .build();
+        System.out.println(stay.toString());
     }
 }
