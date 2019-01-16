@@ -46,7 +46,7 @@ public class PlaceHolderDataStorable {
         this.holderValue = holderValue;
     }
 
-    public void setAll(PlaceHolderData placeHolderData){
+    public void setAll(PlaceHolderData placeHolderData) {
         this.setHolderName(placeHolderData.getHolderName());
         this.setHolderValue(placeHolderData.getHolderValue());
     }

@@ -55,7 +55,7 @@ public class TestData {
             Coordinates coordinates = new Coordinates(112.9, 96.6);
             Beach beach = new Beach("Beach 1");
 
-            Hotel hotel = new Hotel(100, coordinates, beach);
+            Hotel hotel = new Hotel(100, coordinates, beach, 10);
 
             Hotel hotel1 = hotel;
 

@@ -10,7 +10,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class HistoricPlace extends TouristicSite {
-    public HistoricPlace(String desc, Coordinates coord){
-        super(desc, coord);
+    public HistoricPlace(String desc, Coordinates coord, double comfort) {
+        super(desc, coord, comfort);
     }
 }

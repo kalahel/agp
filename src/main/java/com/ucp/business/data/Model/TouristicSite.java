@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public abstract class TouristicSite {
     protected String description;
     protected Coordinates coordinates;
+    protected double comfort;
 }
