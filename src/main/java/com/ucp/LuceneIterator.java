@@ -1,5 +1,6 @@
 package com.ucp;
 
+import com.ucp.configuration.ConfigurationEntry;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
@@ -15,6 +16,9 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
+/**
+ * Retrieves the results from a Lucene query, stores and iterates on them.
+ */
 public class LuceneIterator {
     private final static int MAX_RESULTS = 100;
     private int currentIndex;
@@ -32,33 +36,37 @@ public class LuceneIterator {
 
     }
 
-
+    /**
+     * Initializes the iterator and loads a result from a document list.
+     * Each french word comes directly from D. VODISLAV's course and has to be in french.
+     *
+     * @param searchWords Keywords, separated by spaces
+     * @throws IOException    From file opening
+     * @throws ParseException From QueryParser
+     */
     public void init(String searchWords) throws IOException, ParseException {
-
-        // 1. Specifier l'analyseur pour le texte.
-        //    Le même analyseur est utilisé pour l'indexation et la recherche
         Analyzer analyseur = new StandardAnalyzer();
 
-        // 2. Creation de l'index
-//	    Directory index = new RAMDirectory();  //création index en mémoire
-        Path indexpath = FileSystems.getDefault().getPath("C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\index"); //localisation index
+        Path indexPath = FileSystems.getDefault().getPath(ConfigurationEntry.RELATIVE_INDEX_PATH);
 
-        Directory index = FSDirectory.open(indexpath);  //création index sur disque
+        Directory index = FSDirectory.open(indexPath);
 
-        // 4. Interroger l'index
         this.directoryReader = DirectoryReader.open(index);
-        this.searcher = new IndexSearcher(this.directoryReader); //l'objet qui fait la recherche dans l'index
+        this.searcher = new IndexSearcher(this.directoryReader);
 
-        //Parsing de la requete en un objet Query
-        //  "contenu" est le champ interrogé par defaut si aucun champ n'est precisé
         QueryParser queryParser = new QueryParser("contenu", analyseur);
         Query req = queryParser.parse(searchWords);
 
         this.documentResult = searcher.search(req, MAX_RESULTS);
         this.numberOfResult = documentResult.scoreDocs.length;
-
     }
 
+    /**
+     * Closes the DirectoryReader when arriving at the last result.
+     *
+     * @return Next document in list
+     * @throws IOException
+     */
     public DocumentResult next() throws IOException {
         int docId = this.documentResult.scoreDocs[currentIndex].doc;
 
@@ -74,6 +82,9 @@ public class LuceneIterator {
         return documentResult;
     }
 
+    /**
+     * @return True if the DocumentList has at least one more result, False if it doesn't.
+     */
     public boolean hasNext() {
         return this.currentIndex < this.numberOfResult;
     }

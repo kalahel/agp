@@ -35,7 +35,7 @@ public class SqlLauncher {
         // Iterator example
         SqlIterator sqlIterator = new SqlIterator();
         sqlIterator.init("where description='Montagne'");
-        while (sqlIterator.hasNext()){
+        while (sqlIterator.hasNext()) {
             TouristicSiteDao touristicSite = sqlIterator.next();
             System.out.println(touristicSite.getDescription());
         }

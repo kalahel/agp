@@ -1,5 +1,6 @@
 package com.ucp.dao;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,4 +16,5 @@ public abstract class  TouristicSiteDao {
     protected String description;
     protected double x_axis;
     protected double y_axis;
+    protected double comfort;
 }

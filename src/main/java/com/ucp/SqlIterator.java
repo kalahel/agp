@@ -7,6 +7,9 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
+/**
+ * Retrieves the results from an SQL query, stores and iterates on them.
+ */
 public class SqlIterator {
     private int currentIndex;
     private int numberOfResult;
@@ -19,8 +22,9 @@ public class SqlIterator {
     }
 
     /**
-     * Initialize list of touristic site
-     * @param whereCondition Where condition, must be started by "with"
+     * Initializes the iterator and loads a result from an SQL result list.
+     *
+     * @param whereCondition WHERE condition. Either empty, or must start with "WHERE".
      */
     public void init(String whereCondition) {
         // TODO ADJUST WITHOUT LOADING ALL THE DATA
@@ -33,6 +37,9 @@ public class SqlIterator {
         session.close();
     }
 
+    /**
+     * @return Next entry in the results.
+     */
     public TouristicSiteDao next() {
         TouristicSiteDao resultSite = this.results.get(this.currentIndex);
 
@@ -43,6 +50,9 @@ public class SqlIterator {
         return resultSite;
     }
 
+    /**
+     * @return True if the result list has at least one more result, False if it doesn't.
+     */
     public boolean hasNext() {
         return this.currentIndex < this.numberOfResult;
     }

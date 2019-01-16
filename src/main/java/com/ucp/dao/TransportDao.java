@@ -1,5 +1,6 @@
 package com.ucp.dao;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,4 +14,5 @@ public class TransportDao {
     @GeneratedValue
     int id;
     protected double price;
+    protected double comfort;
 }

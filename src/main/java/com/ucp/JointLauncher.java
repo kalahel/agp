@@ -9,8 +9,10 @@ public class JointLauncher {
     public static void main(String[] args) {
         try {
             LuceneLauncher.indexDocuments();
-            List<TouristicSiteJoined> resultJoin = SqlLuceneJoin.sqlJoinLucene("","mine hombre");
-            //List<TouristicSiteJoined> resultJoin = SqlLuceneJoin.sqlJoinLuceneQuery("where description='plage' with mine");
+            List<TouristicSiteJoined> resultJoin = SqlLuceneJoin.sqlJoinLucene("", "volcano");
+            //List<TouristicSiteJoined> resultJoin = SqlLuceneJoin.sqlJoinLuceneQuery("where description='volcano village' with volcano");
+            //List<TouristicSiteJoined> resultJoin = SqlLuceneJoin.sqlJoinLuceneQuery("where comfort > 7 with volcano");
+
             for (TouristicSiteJoined touristicSiteJoined :
                     resultJoin) {
                 System.out.println(touristicSiteJoined.toString());

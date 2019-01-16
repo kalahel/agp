@@ -1,5 +1,6 @@
 package com.ucp;
 
+import com.ucp.configuration.ConfigurationEntry;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -17,13 +18,13 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
+/**
+ * Allows to index documents
+ */
 public class LuceneLauncher {
-    // TODO CHANGE WITH CORRECT FILES
-    // TODO MAKE IT RELATIVE
-    public final static String TEXT_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\texts";
-    public final static String INDEX_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\index";
 
     public static void main(String[] args) {
+        System.out.println("Working Directory = " + System.getProperty("user.dir"));
         try {
             LuceneLauncher.indexDocuments();
         } catch (IOException e) {
@@ -32,7 +33,7 @@ public class LuceneLauncher {
 
         LuceneIterator luceneIterator = new LuceneIterator();
         try {
-            luceneIterator.init("homme men hombre");
+            luceneIterator.init("volcano");
             while (luceneIterator.hasNext())
                 System.out.println(luceneIterator.next().toString());
         } catch (IOException | ParseException e) {
@@ -41,31 +42,30 @@ public class LuceneLauncher {
 
     }
 
+    /**
+     * Uses Lucene to create an index from the files located in resources/descriptions
+     *
+     * @throws IOException From IndexWriter
+     */
     public static void indexDocuments() throws IOException {
 
-        // 1. Specifier l'analyseur pour le texte.
-        //    Le même analyseur est utilisé pour l'indexation et la recherche
         Analyzer analyseur = new StandardAnalyzer();
 
-        // 2. Creation de l'index
-//	    Directory index = new RAMDirectory();  //création index en mémoire
-        Path indexpath = FileSystems.getDefault().getPath(LuceneLauncher.INDEX_PATH); //localisation index
-        Directory index = FSDirectory.open(indexpath);  //création index sur disque
+        Path indexpath = FileSystems.getDefault().getPath(ConfigurationEntry.RELATIVE_INDEX_PATH);
+        Directory index = FSDirectory.open(indexpath);
 
         IndexWriterConfig config = new IndexWriterConfig(analyseur);
         IndexWriter indexWriter = new IndexWriter(index, config);
 
-        File dir = new File(LuceneLauncher.TEXT_PATH);
+        File dir = new File(ConfigurationEntry.RELATIVE_TEXT_PATH);
         File[] directoryListing = dir.listFiles();
         if (directoryListing != null) {
             for (File child : directoryListing) {
-                // 3. Indexation des documents
-                //    Ici on indexe seulement un fichier
+
                 Document doc = new Document();
                 doc.add(new Field("nom", child.getName(), TextField.TYPE_STORED));
                 doc.add(new Field("contenu", new FileReader(child), TextField.TYPE_NOT_STORED));
                 indexWriter.addDocument(doc);
-                //indexer les autres documents de la même façon
 
             }
         } else {
