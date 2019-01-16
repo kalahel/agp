@@ -2,6 +2,7 @@ package com.ucp.view.consoleInteractor;
 
 import com.ucp.Request.Request;
 import com.ucp.dao.HotelDao;
+import com.ucp.dao.TransportDao;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -89,6 +90,8 @@ public class consoleUserInteractor {
     public static void main(String[] args) {
         //executeInterractor();
         List<HotelDao> a = Request.getHotelsFromUserCriterias(25);
+        List<TransportDao> t = Request.getTransports();
         System.out.println(a.get(0).toString());
+        System.out.println(t.get(0).toString());
     }
 }

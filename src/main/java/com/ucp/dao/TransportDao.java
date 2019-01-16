@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
 @Data
-public class TransportDao {
+public abstract class TransportDao {
     @Id
     @GeneratedValue
     int id;

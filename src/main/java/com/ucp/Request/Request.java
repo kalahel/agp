@@ -5,6 +5,7 @@ import com.ucp.SqlLuceneJoin;
 import com.ucp.TouristicSiteJoined;
 import com.ucp.dao.HotelDao;
 import com.ucp.dao.TouristicSiteDao;
+import com.ucp.dao.TransportDao;
 import com.ucp.hibernate.DBConnection;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.hibernate.Session;
@@ -41,6 +42,18 @@ public class Request {
         Session session = dbConnection.getSessionFactory().getCurrentSession();
         Transaction transaction = session.beginTransaction();
         results = session.createSQLQuery("SELECT * FROM hoteldao " + whereCondition).addEntity(HotelDao.class).list();
+        int numberOfResult = results.size();
+        transaction.commit();
+        session.close();
+        return results;
+    }
+
+    public static List<TransportDao> getTransports(){
+        List<TransportDao> results = null;
+        DBConnection dbConnection = new DBConnection();
+        Session session = dbConnection.getSessionFactory().getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        results = session.createSQLQuery("SELECT * FROM transportDao").addEntity(TransportDao.class).list();
         int numberOfResult = results.size();
         transaction.commit();
         session.close();
