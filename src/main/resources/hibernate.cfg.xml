@@ -16,11 +16,11 @@
         <property name="hibernate.show_sql">true</property>
 
         <!-- Automatic table creation but destroy previous data -->
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
 
 
         <!-- update previous data -->
-        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
     </session-factory>
 </hibernate-configuration>
