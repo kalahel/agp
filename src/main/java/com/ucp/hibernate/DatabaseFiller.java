@@ -93,12 +93,13 @@ public class DatabaseFiller {
         session.persist(activityPlace_4);
         session.persist(activityPlace_5);
         session.persist(activityPlace_6);
-
         session.persist(hotel_1);
         session.persist(hotel_2);
         session.persist(hotel_3);
 
         session.persist(bus);
+        //Annoying warning but effective behavior
+        session.persist(boat);
 
         transaction.commit();
         session.close();
