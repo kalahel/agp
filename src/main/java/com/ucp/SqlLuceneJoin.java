@@ -54,7 +54,6 @@ public class SqlLuceneJoin {
                 }
             }
         }
-        // FIXME SORT BY TouristicSiteJoined.documentResult.score
         Collections.sort(resultList);
 
         return resultList;
