@@ -2,6 +2,7 @@ package com.ucp.hibernate;
 
 import com.ucp.SqlIterator;
 import com.ucp.SqlLauncher;
+import com.ucp.dao.ActivityPlaceDao;
 import com.ucp.dao.HistoricPlaceDao;
 import com.ucp.dao.TouristicSiteDao;
 import org.apache.logging.log4j.LogManager;
@@ -17,10 +18,15 @@ public class DatabaseFiller {
         DBConnection dbConnection = new DBConnection();
         Session session = dbConnection.getSessionFactory().getCurrentSession();
 
-        TouristicSiteDao historicPlaceDao = new HistoricPlaceDao();
-        historicPlaceDao.setDescription("Montagne");
-        historicPlaceDao.setX_axis(1);
-        historicPlaceDao.setY_axis(1);
+        TouristicSiteDao historicPlaceDao = new ActivityPlaceDao();
+        historicPlaceDao.setDescription("waikiki beach");
+        historicPlaceDao.setX_axis(21.280651);
+        historicPlaceDao.setY_axis(-157.837204);
+        historicPlaceDao.setComfort(20);
+
+
+
+
 
         TouristicSiteDao historicPlaceDao2 = new HistoricPlaceDao();
         historicPlaceDao2.setDescription("plage");
