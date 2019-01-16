@@ -10,20 +10,21 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Allows to join the SQL and Lucene results with an SQL query
+ */
 public class SqlLuceneJoin {
     final static Logger logger = LogManager.getLogger(SqlLuceneJoin.class);
 
-
-    // TODO ADD SQL DECOMPOSITION METHODS
-
     /**
-     * Join the sql result with the lucene result
+     * Joins the sql result with the lucene result.
+     * Sorts the result by score in decreasing order.
      *
-     * @param whereCondition
-     * @param searchWords
-     * @return
-     * @throws IOException
-     * @throws ParseException
+     * @param whereCondition SQL condition applied to the SQL DB
+     * @param searchWords    Lucene keywords
+     * @return List of Touristic Sites (and their documents) according to the query
+     * @throws IOException    From Lucene operator
+     * @throws ParseException From text parsing
      */
     public static List<TouristicSiteJoined> sqlJoinLucene(String whereCondition, String searchWords) throws IOException, ParseException {
         List<TouristicSiteJoined> resultList = new ArrayList<>();
@@ -60,9 +61,12 @@ public class SqlLuceneJoin {
     }
 
     /**
-     * @param query Only passed from the where condition
-     *              elude "SELECT * FROM placeholderdatastorable"
-     * @return
+     * Parses a mixed query and calls sqlJoinLucene() with the two separated parts of it.
+     *
+     * @param query Mixed SQL/Text query. Only passed from the where condition (implied "SELECT * FROM placeholderdatastorable")
+     * @return List of Touristic Sites (and their documents) according to the query
+     * @throws IOException    From Lucene operator
+     * @throws ParseException From text parsing
      */
     public static List<TouristicSiteJoined> sqlJoinLuceneQuery(String query) throws IOException, ParseException {
         String withQuery = "";

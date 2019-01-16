@@ -18,8 +18,10 @@ import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 
+/**
+ * Allows to index documents
+ */
 public class LuceneLauncher {
-
 
     public static void main(String[] args) {
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
@@ -40,6 +42,11 @@ public class LuceneLauncher {
 
     }
 
+    /**
+     * Uses Lucene to create an index from the files located in resources/descriptions
+     *
+     * @throws IOException From IndexWriter
+     */
     public static void indexDocuments() throws IOException {
 
         Analyzer analyseur = new StandardAnalyzer();
