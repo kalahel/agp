@@ -1,6 +1,5 @@
 package com.ucp;
 
-import com.ucp.business.data.Model.TouristicSite;
 import com.ucp.dao.TouristicSiteDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,6 +7,7 @@ import org.apache.lucene.queryparser.classic.ParseException;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SqlLuceneJoin {
@@ -54,6 +54,8 @@ public class SqlLuceneJoin {
                 }
             }
         }
+        // FIXME SORT BY TouristicSiteJoined.documentResult.score
+        Collections.sort(resultList);
 
         return resultList;
     }
