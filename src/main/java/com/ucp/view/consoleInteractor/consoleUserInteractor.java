@@ -6,6 +6,9 @@ public class consoleUserInteractor {
     private static Scanner scanner = new Scanner(System.in);
     private static int stayDuration;
     private static int comfort;
+    private static int chillDays;
+    private static int averageActivitiesPerDay;
+    private static int maxBudget;
 
     private static void welcomeDisplay(){
         System.out.println("Bonjour, bienvenue dans notre générateur de séjours");
@@ -23,15 +26,37 @@ public class consoleUserInteractor {
     private static void askForGlobalComfort(){
         System.out.println("Quel niveau de comfort souhaitez vous avoir ?");
         System.out.println("Vous pouvez saisir un chiffre entre 1 et 5");
-        int comfort = scanner.nextInt();
-        if(comfort > 5 || comfort < 0) askForGlobalComfort();
+        int response = scanner.nextInt();
+        if(response > 5 || response < 0) askForGlobalComfort();
+        else comfort = response;
+    }
+
+    private static void askForChillDays(){
+        System.out.println("Combien de jours de repos parmis vos " +stayDuration +" jours de séjour souhaitez vous avoir ?");
+        int response = scanner.nextInt();
+        if( response < 0 ||response > stayDuration)askForGlobalComfort();
+        else chillDays = response;
+    }
+
+    private static void askForAverageActivitiesPerDay(){
+        if(chillDays != 0 && stayDuration/chillDays != 1 ){
+            System.out.println("Combien d'activité souhaitez vous avoir en moyenne lorsque vous n'êtes pas en repos ?");
+            averageActivitiesPerDay = scanner.nextInt();
+        }
+    }
+
+    private static void askForMaxBudget(){
+        System.out.println("QUel est votre budget maximum ? ");
+        maxBudget = scanner.nextInt();
+
     }
 
     public static void main(String[] args){
         welcomeDisplay();
         askForStayDuration();
         askForGlobalComfort();
-
+        askForChillDays();
+        askForAverageActivitiesPerDay();
+        askForMaxBudget();
     }
-
 }
