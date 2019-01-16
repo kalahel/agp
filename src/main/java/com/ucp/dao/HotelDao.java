@@ -16,4 +16,5 @@ public class HotelDao {
     protected double longitude;
     protected double latitude;
     protected String beach;
+    protected String comfort;
 }

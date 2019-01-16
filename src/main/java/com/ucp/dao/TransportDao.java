@@ -13,4 +13,5 @@ public class TransportDao {
     @GeneratedValue
     int id;
     protected double price;
+    protected String comfort;
 }
