@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(discriminatorType = DiscriminatorType.INTEGER)
-@Builder
 @Data
 public abstract class  TouristicSiteDao {
     @Id

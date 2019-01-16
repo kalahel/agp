@@ -2,9 +2,9 @@ package com.ucp.hibernate;
 
 import com.ucp.SqlIterator;
 import com.ucp.SqlLauncher;
-import com.ucp.dao.ActivityPlaceDao;
-import com.ucp.dao.HistoricPlaceDao;
-import com.ucp.dao.TouristicSiteDao;
+import com.ucp.business.data.Model.HistoricPlace;
+import com.ucp.business.data.Model.TouristicSite;
+import com.ucp.dao.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -42,19 +42,49 @@ public class DatabaseFiller {
         activityPlace_2.setY_axis(-155.283520);
         activityPlace_2.setComfort(5);
 
-        TouristicSiteDao activityPlace_5 = TouristicSiteDao.builder()
-                .description("mauna kea observatory")
-                .x_axis(19.823348)
-                .y_axis(-155.472450)
-                .comfort(5)
+        TouristicSiteDao activityPlace_5 = new ActivityPlaceDao();
+        activityPlace_2.setDescription("mauna kea observatory");
+        activityPlace_2.setX_axis(19.823348);
+        activityPlace_2.setY_axis(-155.472450);
+        activityPlace_2.setComfort(5);
+
+        TouristicSiteDao activityPlace_6 = new ActivityPlaceDao();
+        activityPlace_2.setDescription("kohala mountain");
+        activityPlace_2.setX_axis(20.0850956);
+        activityPlace_2.setY_axis(-155.7189817);
+        activityPlace_2.setComfort(5);
+
+        HotelDao hotel_1 = HotelDao.builder()
+                .beach("wild seashore")
+                .comfort(20)
+                .latitude(19.1329063)
+                .longitude(-155.5124336)
+                .price(144)
                 .build();
 
-        TouristicSiteDao activityPlace_6 = TouristicSiteDao.builder()
-                .description("kohala mountain")
-                .x_axis(20.0850956)
-                .y_axis(-155.7189817)
-                .comfort(5)
+        HotelDao hotel_2 = HotelDao.builder()
+                .beach("anaeho omalu beach")
+                .comfort(45)
+                .latitude(19.9155972)
+                .longitude(-155.8957128)
+                .price(287)
                 .build();
+
+        HotelDao hotel_3 = HotelDao.builder()
+                .beach("pauoa bay")
+                .comfort(60)
+                .latitude(19.9507468)
+                .longitude(-155.8656309)
+                .price(371)
+                .build();
+
+        TransportDao bus = new BusDao();
+        bus.setComfort(1);
+        bus.setPrice(3);
+
+        TransportDao boat = new BoatDao();
+        boat.setComfort(6);
+        boat.setPrice(25);
 
         Transaction transaction = session.beginTransaction();
         session.persist(activityPlace_1);
@@ -63,6 +93,12 @@ public class DatabaseFiller {
         session.persist(activityPlace_4);
         session.persist(activityPlace_5);
         session.persist(activityPlace_6);
+
+        session.persist(hotel_1);
+        session.persist(hotel_2);
+        session.persist(hotel_3);
+
+        session.persist(bus);
 
         transaction.commit();
         session.close();
