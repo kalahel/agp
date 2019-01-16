@@ -10,7 +10,7 @@ import lombok.ToString;
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 public class Boat extends Transport {
-    public Boat(double price, double comfort){
+    public Boat(double price, double comfort) {
         super(price, comfort);
     }
 }

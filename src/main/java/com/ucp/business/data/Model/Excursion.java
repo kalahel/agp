@@ -36,7 +36,7 @@ public class Excursion {
 
     public static class ExcursionBuilder {
         public ExcursionBuilder setTouristicSites(TouristicSite... sites) {
-            this.touristicSites=new ArrayList<TouristicSite>();
+            this.touristicSites = new ArrayList<TouristicSite>();
             for (TouristicSite site : sites) {
                 this.touristicSites.add(site);
             }
@@ -44,22 +44,23 @@ public class Excursion {
         }
 
         public ExcursionBuilder setTransports(Transport... transports) {
-            this.transports=new ArrayList<Transport>();
+            this.transports = new ArrayList<Transport>();
             for (Transport transport : transports) {
                 this.transports.add(transport);
             }
             return this;
         }
+
         //FIXME WRONG RESULT
-        public ExcursionBuilder  computePrice(){
+        public ExcursionBuilder computePrice() {
             double prix = this.hotel.getPrice();
-            System.out.println("    Prix de l'hotel : "+prix);
-            for (Transport t : this.transports){
+            System.out.println("    Prix de l'hotel : " + prix);
+            for (Transport t : this.transports) {
                 prix = prix + t.getPrice();
-                System.out.println("        prix du transport" +t.getPrice());
+                System.out.println("        prix du transport" + t.getPrice());
             }
             this.excursionPrice = prix;
-            System.out.print("      prix total = " +prix);
+            System.out.print("      prix total = " + prix);
             return this;
         }
     }

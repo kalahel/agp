@@ -1,18 +1,20 @@
 package com.ucp.business.data.Model.Tests;
 
+import com.ucp.Launcher;
 import com.ucp.business.data.Model.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.mysql.cj.conf.PropertyKey.logger;
 import static java.sql.Types.NULL;
 
 public class CompleteEngineTest {
-    public static void main(String [ ] args){
+    public static void main(String[] args) {
 
         //Creating touristic places
         TouristicSite volcanoKilauea = new ActivityPlace("Famous volcano known as the most active on Earth. It is in fact one of Hawaii highest mountains.",
-                new Coordinates(19.406899, -155.283336),-10);
+                new Coordinates(19.406899, -155.283336), -10);
         TouristicSite VolcanoMaunaLoa = new ActivityPlace("This volcano is a typical shield one, and considered as one of the most active on earth.",
                 new Coordinates(19.4720312, -155.5922038), -20);
         TouristicSite KailuaKona = new ActivityPlace("Charming village on the west coast of the island, with many facilities for foreign tourists.",
@@ -33,7 +35,7 @@ public class CompleteEngineTest {
 
         //Creating transportations
         Transport bus_1 = new Bus(10, 1);
-        Transport bus_2 = new Bus(15,1);
+        Transport bus_2 = new Bus(15, 1);
         Transport bus_3 = new Bus(20, 1);
 
         Transport boat_1 = new Boat(20, 5);
@@ -41,7 +43,7 @@ public class CompleteEngineTest {
         Transport boat_3 = new Boat(30, 5);
 
         //TODO DEVELOP
-        Day day_1 = new Day(4,Excursion.builder()
+        Day day_1 = new Day(4, Excursion.builder()
                 .setTransports(boat_1, boat_1)
                 .setTouristicSites(KailuaKona)
                 .hotel(SeaMountainCondo)
@@ -65,16 +67,16 @@ public class CompleteEngineTest {
         System.out.println(day_2.toString());
         System.out.println(day_3.toString());
 
-        System.out.println(" Comforts day_1 : " +day_1.getComfort());
-        System.out.println(" Comforts day_2 : " +day_2.getComfort());
-        System.out.println(" Comforts day_3 : " +day_3.getComfort());
+        System.out.println(" Comforts day_1 : " + day_1.getComfort());
+        System.out.println(" Comforts day_2 : " + day_2.getComfort());
+        System.out.println(" Comforts day_3 : " + day_3.getComfort());
 
 
         Stay stay = Stay.builder()
                 .setDays(day_1, day_2, day_3)
                 .hotel(SeaMountainCondo)
                 .computePrice()
+                .computeComfort()
                 .build();
-        System.out.println(stay.toString());
     }
 }

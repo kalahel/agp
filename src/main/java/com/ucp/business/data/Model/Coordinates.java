@@ -10,10 +10,12 @@ import lombok.NoArgsConstructor;
 public class Coordinates {
     private double x_axis;
     private double y_axis;
-    public double getDistance(Coordinates coordinates){
+
+    public double getDistance(Coordinates coordinates) {
         return Math.sqrt(Math.pow(coordinates.x_axis - this.x_axis, 2) + Math.pow(coordinates.y_axis + this.y_axis, 2));
     }
-    public double getDistanceFromGeoCoordinates( double latitude, double longitude) {
+
+    public double getDistanceFromGeoCoordinates(double latitude, double longitude) {
         double degrees2radian = (Math.PI / 180);
         double dlong = (longitude - this.y_axis) * degrees2radian;
         double dlat = (latitude - this.x_axis) * degrees2radian;
@@ -25,7 +27,7 @@ public class Coordinates {
         return 6367 * result;
     }
 
-    public double getDistanceFromGeoCoordinates( Coordinates coordinates) {
+    public double getDistanceFromGeoCoordinates(Coordinates coordinates) {
         double degrees2radian = (Math.PI / 180);
         double dlong = (coordinates.getY_axis() - this.y_axis) * degrees2radian;
         double dlat = (coordinates.getX_axis() - this.x_axis) * degrees2radian;
