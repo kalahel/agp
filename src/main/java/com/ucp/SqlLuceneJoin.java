@@ -57,4 +57,21 @@ public class SqlLuceneJoin {
 
         return resultList;
     }
+
+    /**
+     * @param query Only passed from the where condition
+     *              elude "SELECT * FROM placeholderdatastorable"
+     * @return
+     */
+    public static List<TouristicSiteJoined> sqlJoinLuceneQuery(String query) throws IOException, ParseException {
+        String withQuery = "";
+        String sqlQuery = "";
+        String[] queryDecomposed;
+        // FIXME CAUSE PROBLEMS WITH DESCRIPTION NOT IN LOWERCASE
+        queryDecomposed = query.toLowerCase().split("with ");
+        sqlQuery = queryDecomposed[0];
+        withQuery = queryDecomposed[1];
+
+        return SqlLuceneJoin.sqlJoinLucene(sqlQuery, withQuery);
+    }
 }
