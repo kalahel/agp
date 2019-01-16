@@ -31,28 +31,28 @@ public class DatabaseFiller {
         activityPlace_2.setComfort(15);
 
         TouristicSiteDao activityPlace_3 = new ActivityPlaceDao();
-        activityPlace_2.setDescription("volcano village");
-        activityPlace_2.setX_axis(19.444224);
-        activityPlace_2.setY_axis(-155.230330);
-        activityPlace_2.setComfort(10);
+        activityPlace_3.setDescription("volcano village");
+        activityPlace_3.setX_axis(19.444224);
+        activityPlace_3.setY_axis(-155.230330);
+        activityPlace_3.setComfort(10);
 
         TouristicSiteDao activityPlace_4 = new ActivityPlaceDao();
-        activityPlace_2.setDescription("kilauea volcano");
-        activityPlace_2.setX_axis(19.406240);
-        activityPlace_2.setY_axis(-155.283520);
-        activityPlace_2.setComfort(5);
+        activityPlace_4.setDescription("kilauea volcano");
+        activityPlace_4.setX_axis(19.406240);
+        activityPlace_4.setY_axis(-155.283520);
+        activityPlace_4.setComfort(5);
 
         TouristicSiteDao activityPlace_5 = new ActivityPlaceDao();
-        activityPlace_2.setDescription("mauna kea observatory");
-        activityPlace_2.setX_axis(19.823348);
-        activityPlace_2.setY_axis(-155.472450);
-        activityPlace_2.setComfort(5);
+        activityPlace_5.setDescription("mauna kea observatory");
+        activityPlace_5.setX_axis(19.823348);
+        activityPlace_5.setY_axis(-155.472450);
+        activityPlace_5.setComfort(5);
 
         TouristicSiteDao activityPlace_6 = new ActivityPlaceDao();
-        activityPlace_2.setDescription("kohala mountain");
-        activityPlace_2.setX_axis(20.0850956);
-        activityPlace_2.setY_axis(-155.7189817);
-        activityPlace_2.setComfort(5);
+        activityPlace_6.setDescription("kohala mountain");
+        activityPlace_6.setX_axis(20.0850956);
+        activityPlace_6.setY_axis(-155.7189817);
+        activityPlace_6.setComfort(5);
 
         HotelDao hotel_1 = HotelDao.builder()
                 .beach("wild seashore")

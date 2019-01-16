@@ -20,7 +20,8 @@ import java.nio.file.Path;
 public class LuceneLauncher {
     // TODO CHANGE WITH CORRECT FILES
     // TODO MAKE IT RELATIVE
-    public final static String TEXT_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\texts";
+    //public final static String TEXT_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\texts";
+    public final static String TEXT_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\descriptions";
     public final static String INDEX_PATH = "C:\\Fac\\M1\\COO\\agp\\src\\main\\resources\\index";
 
     public static void main(String[] args) {
@@ -32,7 +33,7 @@ public class LuceneLauncher {
 
         LuceneIterator luceneIterator = new LuceneIterator();
         try {
-            luceneIterator.init("homme men hombre");
+            luceneIterator.init("volcano");
             while (luceneIterator.hasNext())
                 System.out.println(luceneIterator.next().toString());
         } catch (IOException | ParseException e) {
