@@ -2,6 +2,7 @@ package com.ucp.dao;
 
 import com.ucp.business.data.Model.ActivityPlace;
 import com.ucp.business.data.Model.Coordinates;
+import com.ucp.business.data.Model.TouristicSite;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -21,8 +22,8 @@ public class ActivityPlaceDao extends TouristicSiteDao {
         this.comfort = activityPlace.getComfort();
     }
 
-    public ActivityPlace generateActivityPlace() {
+    @Override
+    public TouristicSite generateTouristicSite() {
         return new ActivityPlace(this.description, new Coordinates(this.x_axis, this.y_axis), this.comfort);
     }
-
 }

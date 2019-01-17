@@ -2,6 +2,7 @@ package com.ucp.dao;
 
 import com.ucp.business.data.Model.Coordinates;
 import com.ucp.business.data.Model.HistoricPlace;
+import com.ucp.business.data.Model.TouristicSite;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +13,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue("1")
 @Data
 @NoArgsConstructor
-public class HistoricPlaceDao extends TouristicSiteDao{
+public class HistoricPlaceDao extends TouristicSiteDao {
 
     public HistoricPlaceDao(HistoricPlace historicPlace) {
         this.description = historicPlace.getDescription();
@@ -21,7 +22,8 @@ public class HistoricPlaceDao extends TouristicSiteDao{
         this.comfort = historicPlace.getComfort();
     }
 
-    public HistoricPlace generateHistoricPlace(){
-        return new HistoricPlace(this.description,new Coordinates(this.x_axis, this.y_axis), this.comfort);
+    @Override
+    public TouristicSite generateTouristicSite() {
+        return new HistoricPlace(this.description, new Coordinates(this.x_axis, this.y_axis), this.comfort);
     }
 }

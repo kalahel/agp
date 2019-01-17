@@ -1,5 +1,6 @@
 package com.ucp.dao;
 
+import com.ucp.business.data.Model.Transport;
 import lombok.Builder;
 import lombok.Data;
 
@@ -15,4 +16,6 @@ public abstract class TransportDao {
     int id;
     protected double price;
     protected double comfort;
+
+    abstract public Transport generateTransport();
 }

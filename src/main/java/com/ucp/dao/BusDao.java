@@ -1,6 +1,7 @@
 package com.ucp.dao;
 
 import com.ucp.business.data.Model.Bus;
+import com.ucp.business.data.Model.Transport;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,12 +15,13 @@ import javax.persistence.Entity;
 @NoArgsConstructor
 public class BusDao extends TransportDao {
 
-    public BusDao(Bus bus){
+    public BusDao(Bus bus) {
         this.price = bus.getPrice();
         this.comfort = bus.getComfort();
     }
 
-    public Bus generateBus(){
-        return new Bus(this.price,this.comfort);
+    @Override
+    public Transport generateTransport() {
+        return new Bus(this.price, this.comfort);
     }
 }
