@@ -1,5 +1,6 @@
 package com.ucp.view.consoleInteractor;
 
+import com.ucp.PropositionEngine.PropositionCriterias;
 import com.ucp.Request.Request;
 import com.ucp.dao.HotelDao;
 import com.ucp.dao.TouristicSiteDao;
@@ -89,6 +90,7 @@ public class consoleUserInteractor {
     }
 
     public static void main(String[] args) {
+        executeInterractor();
         comfort = 30;
         criterias = "mountain volcano lava stone";
         List<HotelDao> hotels = Request.getHotelsFromUserCriterias(comfort);

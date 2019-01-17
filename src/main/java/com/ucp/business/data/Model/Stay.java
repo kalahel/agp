@@ -52,5 +52,10 @@ public class Stay {
             }
             return this;
         }
+
+        public StayBuilder setDays(ArrayList<Day> days) {
+            this.daysList = days;
+            return this;
+        }
     }
 }
