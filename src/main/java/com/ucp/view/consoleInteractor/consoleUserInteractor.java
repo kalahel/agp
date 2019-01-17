@@ -1,8 +1,18 @@
 package com.ucp.view.consoleInteractor;
 
+import com.ucp.PropositionEngine.PropositionCriterias;
+import com.ucp.PropositionEngine.PropositionEngine;
+import com.ucp.Request.Request;
+import com.ucp.business.data.Model.Stay;
+import com.ucp.dao.HotelDao;
+import com.ucp.dao.TouristicSiteDao;
+import com.ucp.dao.TransportDao;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class consoleUserInteractor {
@@ -78,10 +88,25 @@ public class consoleUserInteractor {
 
 
     private static void executePropositor() {
-
+        PropositionEngine.getProposition(PropositionCriterias.builder()
+                .averageActivitiesPerDay(averageActivitiesPerDay)
+                .chillDays(chillDays)
+                .comfort(comfort)
+                .criterias(criterias)
+                .maxBudget(maxBudget)
+                .stayDuration(stayDuration)
+                .build());
+        PropositionEngine.computeProposition().toString();
     }
 
     public static void main(String[] args) {
         executeInterractor();
+        executePropositor();
+        comfort = 30;
+        criterias = "mountain volcano lava stone";
+        List<HotelDao> hotels = Request.getHotelsFromUserCriterias(comfort);
+        List<TouristicSiteDao> sites = Request.getTouristicSitesFromUserCriterias(criterias);
+        for(HotelDao hotel : hotels) System.out.println(hotel.toString());
+        for(TouristicSiteDao site : sites) System.out.println(site.getId());
     }
 }

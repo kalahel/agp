@@ -13,4 +13,13 @@ public class Boat extends Transport {
     public Boat(double price, double comfort) {
         super(price, comfort);
     }
+
+    @Override
+    public double returnScaledComfort() {
+        if(this.getComfort() < 20) return 1;
+        if(this.getComfort() < 40) return 2;
+        if(this.getComfort() < 60) return 3;
+        if(this.getComfort() < 80) return 4;
+        else return 5;
+    }
 }

@@ -1,5 +1,6 @@
 package com.ucp.dao;
 
+import com.ucp.business.data.Model.TouristicSite;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,4 +18,6 @@ public abstract class  TouristicSiteDao {
     protected double x_axis;
     protected double y_axis;
     protected double comfort;
+
+    public abstract TouristicSite generateTouristicSite();
 }

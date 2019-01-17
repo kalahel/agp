@@ -43,6 +43,11 @@ public class Excursion {
             return this;
         }
 
+        public ExcursionBuilder setTouristicSites(ArrayList<TouristicSite> sites) {
+            this.touristicSites = sites;
+            return this;
+        }
+
         public ExcursionBuilder setTransports(Transport... transports) {
             this.transports = new ArrayList<Transport>();
             for (Transport transport : transports) {
@@ -51,16 +56,52 @@ public class Excursion {
             return this;
         }
 
-        //FIXME WRONG RESULT
+        public ExcursionBuilder setTransports(ArrayList<Transport> transports) {
+            this.transports = transports;
+            return this;
+        }
+
         public ExcursionBuilder computePrice() {
+
+            if(touristicSites.size() == 0 ) return this;
+
             double prix = this.hotel.getPrice();
-            System.out.println("    Prix de l'hotel : " + prix);
-            for (Transport t : this.transports) {
-                prix = prix + t.getPrice();
-                System.out.println("        prix du transport" + t.getPrice());
+
+            double priceFromHotelToFirstActivity = transports
+                    .get(0).getPrice() * hotel
+                    .getCoordinates()
+                    .getDistanceFromGeoCoordinates(this.touristicSites.get(0).getCoordinates());
+            double priceFromLastActivityToHotel = transports
+                    .get(transports.size() - 1)
+                    .getPrice() * hotel
+                    .getCoordinates()
+                    .getDistanceFromGeoCoordinates(this.touristicSites.get(touristicSites.size() - 1).getCoordinates());
+
+            double priceOfTransportationBetweenActivities = 0.0;
+
+            for (int i = 1; i < touristicSites.size() - 2; i++) {
+                priceOfTransportationBetweenActivities += touristicSites
+                        .get(i)
+                        .getCoordinates()
+                        .getDistanceFromGeoCoordinates(touristicSites.get(i + 1)
+                                .getCoordinates()) * transports.get(i).getPrice();
             }
+            prix += priceFromHotelToFirstActivity + priceFromLastActivityToHotel + priceOfTransportationBetweenActivities;
             this.excursionPrice = prix;
             System.out.print("      prix total = " + prix);
+            return this;
+        }
+
+        public ExcursionBuilder computeComfort() {
+            if(touristicSites.size() == 0) return this;
+            double comfort = 0.0;
+            for (Transport transport : transports) {
+                comfort += transport.getComfort();
+            }
+            for (TouristicSite site : touristicSites) {
+                comfort += site.getComfort();
+            }
+            this.comfort = comfort / (touristicSites.size() + transports.size());
             return this;
         }
     }
