@@ -97,7 +97,7 @@ public class Excursion {
             for (TouristicSite site : touristicSites) {
                 comfort += site.getComfort();
             }
-            this.comfort = comfort;
+            this.comfort = comfort / (touristicSites.size() + transports.size());
             return this;
         }
     }

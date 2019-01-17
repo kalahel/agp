@@ -33,8 +33,8 @@ public class Request {
 
     public static List<HotelDao> getHotelsFromUserCriterias(int comfort){
 
-        int requestSuperiorLimit = comfort + 10;
-        int resquestInferiorLimit = comfort - 10;
+        int requestSuperiorLimit = (comfort * 20) + 20;
+        int resquestInferiorLimit = (comfort * 20) -10;
         List<HotelDao> results = null;
         String whereCondition = "WHERE comfort BETWEEN "+resquestInferiorLimit +" AND " +requestSuperiorLimit;
 

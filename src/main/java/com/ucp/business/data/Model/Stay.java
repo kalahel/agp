@@ -38,10 +38,10 @@ public class Stay {
                 if(day.getExcursion() != null){
                     this.comfort += day.getComfort();
                 }else{
-                    this.comfort += this.hotel.getComfort();
+                    this.comfort += this.hotel.getComfort() * 2;
                 }
             }
-            this.comfort=comfort/this.daysList.size();
+            this.comfort=comfort/this.daysList.size() * 2;
             return this;
         }
 

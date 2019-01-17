@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public abstract class Transport {
+public abstract class Transport implements Comfort {
     protected double price;
     protected double comfort;
 }
