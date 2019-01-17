@@ -1,6 +1,5 @@
 package com.ucp.PropositionEngine;
 
-import com.ucp.Launcher;
 import com.ucp.Request.Request;
 import com.ucp.business.data.Model.*;
 import com.ucp.dao.HotelDao;
@@ -11,8 +10,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Queue;
 
 public class PropositionEngine {
 
@@ -23,7 +20,7 @@ public class PropositionEngine {
     private static ArrayList<TransportDao> transports;
     private static PropositionCriterias proposition;
 
-    public static void getProposition(PropositionCriterias prop) {
+    public static void setProposition(PropositionCriterias prop) {
         proposition = prop;
     }
 
@@ -41,8 +38,8 @@ public class PropositionEngine {
         sites = new ArrayList<>(Request.getTouristicSitesFromUserCriterias(proposition.getCriterias()));
         logger.error("collecting transports from proposition");
         transports = new ArrayList<>(Request.getTransports());
-        logger.error("sites : "+sites.toString());
-        logger.error("sites : "+sites.size());
+        logger.error("sites : " + sites.toString());
+        logger.error("sites : " + sites.size());
     }
 
     private static ArrayList<TouristicSiteDao> selectActivities() {
@@ -54,25 +51,25 @@ public class PropositionEngine {
                     .getAverageActivitiesPerDay() * (proposition
                     .getStayDuration() - proposition
                     .getChillDays())));
-            logger.error("Subset built : "+subset.toString());
+            logger.error("Subset built : " + subset.toString());
         } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
-            System.out.println("IL NY AS PAS ASSEZ");
+            //e.printStackTrace();
+            System.out.println("IL NY A PAS ASSEZ");
         }
         logger.error("Returning subset");
         return subset;
     }
 
-    private static Stay findValidStayFromList(ArrayList<Stay> stays){
+    private static Stay findValidStayFromList(ArrayList<Stay> stays) {
         logger.error("ENTERING findValidStayFromList");
         double priceGap = 0.0;
         double comfortGap = 0.0;
-        logger.error("Iterating over stays list of size = "+stays.size());
-        for(Stay stay : stays){
+        logger.error("Iterating over stays list of size = " + stays.size());
+        for (Stay stay : stays) {
             priceGap = proposition.getMaxBudget() - stay.getPrice();
             comfortGap = proposition.getComfort() - stay.getComfort();
-            if(priceGap > 0 && comfortGap < 0) {
-                logger.error("returning valid stay : "+stay.toString());
+            if (priceGap > 0 && comfortGap < 0) {
+                logger.error("returning valid stay : " + stay.toString());
                 return stay;
             }
 
@@ -81,17 +78,15 @@ public class PropositionEngine {
         return null;
     }
 
-    private static Stay computeMostOptimalStay(ArrayList<TouristicSiteDao> subset){
+    private static Stay computeMostOptimalStay(ArrayList<TouristicSiteDao> subset) {
 
         LinkedList<TouristicSiteDao> siteQueue = new LinkedList<>();
-
-
 
 
         logger.error("ENTERING computeMostOptimalStay");
         ArrayList<Stay> stays = new ArrayList<>();
         logger.error("Iterating over hotel list");
-        for(HotelDao hotel : hotels){
+        for (HotelDao hotel : hotels) {
 
             for (TouristicSiteDao touristicSiteDao :
                     subset) {
@@ -104,7 +99,7 @@ public class PropositionEngine {
                 ArrayList<TouristicSite> sites = new ArrayList<>();
                 if (i % proposition.getAverageActivitiesPerDay() == 0 && !siteQueue.isEmpty()) {
                     ArrayList<TouristicSiteDao> dailyActivities = new ArrayList<>();
-                    for( int j = 0; j < proposition.getAverageActivitiesPerDay() ; j++ ){
+                    for (int j = 0; j < proposition.getAverageActivitiesPerDay(); j++) {
                         dailyActivities.add(siteQueue.getFirst());
                         siteQueue.removeFirst();
                     }

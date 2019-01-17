@@ -3,15 +3,12 @@ package com.ucp.view.consoleInteractor;
 import com.ucp.PropositionEngine.PropositionCriterias;
 import com.ucp.PropositionEngine.PropositionEngine;
 import com.ucp.Request.Request;
-import com.ucp.business.data.Model.Stay;
 import com.ucp.dao.HotelDao;
 import com.ucp.dao.TouristicSiteDao;
-import com.ucp.dao.TransportDao;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -88,7 +85,7 @@ public class consoleUserInteractor {
 
 
     private static void executePropositor() {
-        PropositionEngine.getProposition(PropositionCriterias.builder()
+        PropositionEngine.setProposition(PropositionCriterias.builder()
                 .averageActivitiesPerDay(averageActivitiesPerDay)
                 .chillDays(chillDays)
                 .comfort(comfort)
