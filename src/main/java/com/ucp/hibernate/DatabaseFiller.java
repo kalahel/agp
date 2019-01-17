@@ -78,6 +78,70 @@ public class DatabaseFiller {
                 .price(371)
                 .build();
 
+        HotelDao hotel_4 = HotelDao.builder()
+                .beach("kohala lodge beach")
+                .comfort(80)
+                .latitude(20.212477)
+                .longitude(-155.845040)
+                .price(529)
+                .build();
+
+        HotelDao hotel_5 = HotelDao.builder()
+                .beach("waipio hostel beach")
+                .comfort(10)
+                .latitude(20.1034597)
+                .longitude(-155.5968247)
+                .price(68)
+                .build();
+
+        HotelDao hotel_6 = HotelDao.builder()
+                .beach("kulaniapia falls")
+                .comfort(30)
+                .latitude(19.7235648)
+                .longitude(-155.1633093)
+                .price(249)
+                .build();
+
+        HotelDao hotel_7 = HotelDao.builder()
+                .beach("wild ginger")
+                .comfort(15)
+                .latitude(19.717909)
+                .longitude(-155.1164457)
+                .price(80)
+                .build();
+
+        HotelDao hotel_8 = HotelDao.builder()
+                .beach("hualaylay beach")
+                .comfort(100)
+                .latitude(19.8267984)
+                .longitude(-155.9937483)
+                .price(1000)
+                .build();
+
+        HotelDao hotel_9 = HotelDao.builder()
+                .beach("pauoa bay")
+                .comfort(60)
+                .latitude(19.9507468)
+                .longitude(-155.8656309)
+                .price(371)
+                .build();
+
+        HotelDao hotel_10 = HotelDao.builder()
+                .beach("pauoa bay")
+                .comfort(60)
+                .latitude(19.9507468)
+                .longitude(-155.8656309)
+                .price(371)
+                .build();
+
+        HotelDao hotel_11 = HotelDao.builder()
+                .beach("pauoa bay")
+                .comfort(60)
+                .latitude(19.9507468)
+                .longitude(-155.8656309)
+                .price(371)
+                .build();
+
         TransportDao bus = new BusDao();
         bus.setComfort(1);
         bus.setPrice(3);
