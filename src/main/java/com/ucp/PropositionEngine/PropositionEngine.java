@@ -10,7 +10,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Queue;
 
 public class PropositionEngine {
 
@@ -80,41 +82,56 @@ public class PropositionEngine {
     }
 
     private static Stay computeMostOptimalStay(ArrayList<TouristicSiteDao> subset){
+
+        LinkedList<TouristicSiteDao> siteQueue = new LinkedList<>();
+
+
+
+
         logger.error("ENTERING computeMostOptimalStay");
         ArrayList<Stay> stays = new ArrayList<>();
         logger.error("Iterating over hotel list");
         for(HotelDao hotel : hotels){
 
+            for (TouristicSiteDao touristicSiteDao :
+                    subset) {
+                siteQueue.addLast(touristicSiteDao);
+            }
+
             ArrayList<Day> days = new ArrayList<>();
             for (int i = 0; i < subset.size(); i++) {
-                if (i % proposition.getAverageActivitiesPerDay() == 0) {
-                    ArrayList<TouristicSiteDao> dailyActivities = new ArrayList<>(subset.subList(0, proposition.getAverageActivitiesPerDay() - 1));
-                    //TODO
-                    while (subset.size() > (subset.size() - dailyActivities.size())) {
-                        subset.remove(0);
+                ArrayList<Transport> transports = new ArrayList<>();
+                ArrayList<TouristicSite> sites = new ArrayList<>();
+                if (i % proposition.getAverageActivitiesPerDay() == 0 && !siteQueue.isEmpty()) {
+                    ArrayList<TouristicSiteDao> dailyActivities = new ArrayList<>();
+                    for( int j = 0; j < proposition.getAverageActivitiesPerDay() ; j++ ){
+                        dailyActivities.add(siteQueue.getFirst());
+                        siteQueue.removeFirst();
                     }
-                    //subset.subList(0, proposition.getAverageActivitiesPerDay()).clear();
 
-                    ArrayList<Transport> transports = new ArrayList<>();
+
                     //TODO ADD RANDOM BETWEEN TRANSPORTATIONS AND EXTRACTION FROM DATABASE
                     while (transports.size() <= dailyActivities.size()) {
                         transports.add(new Bus(1, 1));
                     }
-                    ArrayList<TouristicSite> sites = new ArrayList<>();
+
+
                     //TODO USE CONVERTER BETWEEN DAO AND BUSINESS
                     for (TouristicSiteDao site : dailyActivities) {
                         TouristicSite tSite = site.generateTouristicSite();
                         sites.add(tSite);
                     }
-                    Day day = new Day(proposition.getAverageActivitiesPerDay(), Excursion.builder()
-                            .setTouristicSites(sites)
-                            .setTransports(transports)
-                            .hotel(hotel.generateHotel())
-                            .computeComfort()
-                            .computePrice()
-                            .build());
-                    days.add(day);
+
                 }
+
+                Day day = new Day(proposition.getAverageActivitiesPerDay(), Excursion.builder()
+                        .setTouristicSites(sites)
+                        .setTransports(transports)
+                        .hotel(hotel.generateHotel())
+                        .computeComfort()
+                        .computePrice()
+                        .build());
+                days.add(day);
             }
             stays.add(Stay.builder().hotel(hotel.generateHotel()).setDays(days).computeComfort().computePrice().build());
         }
