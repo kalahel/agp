@@ -112,7 +112,7 @@ public class PropositionEngine {
 
                     //TODO ADD RANDOM BETWEEN TRANSPORTATIONS AND EXTRACTION FROM DATABASE
                     while (transports.size() <= dailyActivities.size()) {
-                        transports.add(new Bus(1, 1));
+                        transports.add(new Bus(0.001, 1));
                     }
 
 
