@@ -11,18 +11,20 @@
 %>
 <html>
 <head>
-    <title>PAGE1</title>
+    <title>PAGE2</title>
 </head>
 <body>
 <p>Whoa guys so hard, project already set up for you </p>
 <jsp:useBean id="test" class="com.ucp.jsfbeans.ExampleBean"/>
 <jsp:getProperty name="test" property="message"/>
-<jsp:setProperty name="test" property="message" value="Hello JSP..."/>
+<jsp:setProperty name="test" property="message" value="LA PAGE 2..."/>
 <p>Got message....</p>
 <p>
     <%=b.sayHello("sandwiches")%>
+    <%=request.getParameter("firstname")%><br/>
+    <%=request.getParameter("lastname")%>
 </p>
-<form action="bonjour.jsp">
+<form action="index.jsp" method="post">
     First name:<br>
     <input type="text" name="firstname" value="Mickey"><br>
     Last name:<br>
