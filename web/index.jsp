@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.ucp.jsfbeans.ExampleBean" %><%--
   Created by IntelliJ IDEA.
   User: mathieu.hannoun
   Date: 19/12/2018
@@ -11,6 +11,8 @@
     <title>$Title$</title>
   </head>
   <body>
-  <p>Whoa guys so hard, project already set up for you !</p>
+  <p>Whoa guys so hard, project already set up for you </p>
+
+
   </body>
 </html>
