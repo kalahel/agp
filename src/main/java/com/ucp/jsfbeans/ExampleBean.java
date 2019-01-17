@@ -7,6 +7,12 @@ import javax.annotation.ManagedBean;
 @ManagedBean
 @Data
 public class ExampleBean {
-    private String name;
+    private String message = "No message specified";
 
+    public String getMessage() {
+        return(message);
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }

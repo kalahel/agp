@@ -12,7 +12,10 @@
   </head>
   <body>
   <p>Whoa guys so hard, project already set up for you </p>
-
+  <jsp:useBean id = "test" class = "com.ucp.jsfbeans.ExampleBean" />
+  <jsp:setProperty name = "test"  property = "message" value = "Hello JSP..." />
+  <p>Got message....</p>
+  <jsp:getProperty name = "test" property = "message" />
 
   </body>
 </html>
