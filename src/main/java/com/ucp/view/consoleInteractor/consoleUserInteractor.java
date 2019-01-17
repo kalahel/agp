@@ -2,6 +2,7 @@ package com.ucp.view.consoleInteractor;
 
 import com.ucp.Request.Request;
 import com.ucp.dao.HotelDao;
+import com.ucp.dao.TouristicSiteDao;
 import com.ucp.dao.TransportDao;
 
 import java.io.BufferedReader;
@@ -88,10 +89,11 @@ public class consoleUserInteractor {
     }
 
     public static void main(String[] args) {
-        //executeInterractor();
-        List<HotelDao> a = Request.getHotelsFromUserCriterias(25);
-        List<TransportDao> t = Request.getTransports();
-        System.out.println(a.get(0).toString());
-        System.out.println(t.get(0).toString());
+        comfort = 30;
+        criterias = "mountain volcano lava stone";
+        List<HotelDao> hotels = Request.getHotelsFromUserCriterias(comfort);
+        List<TouristicSiteDao> sites = Request.getTouristicSitesFromUserCriterias(criterias);
+        for(HotelDao hotel : hotels) System.out.println(hotel.toString());
+        for(TouristicSiteDao site : sites) System.out.println(site.getId());
     }
 }
