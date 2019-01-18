@@ -55,46 +55,46 @@ public class DatabaseFiller {
         activityPlace_6.setComfort(5);
 
         TouristicSiteDao activityPlace_7 = new ActivityPlaceDao();
-        activityPlace_6.setDescription("halaula");
-        activityPlace_6.setX_axis(20.2298897);
-        activityPlace_6.setY_axis(-155.7998821);
-        activityPlace_6.setComfort(25);
+        activityPlace_7.setDescription("halaula");
+        activityPlace_7.setX_axis(20.2298897);
+        activityPlace_7.setY_axis(-155.7998821);
+        activityPlace_7.setComfort(25);
 
         TouristicSiteDao activityPlace_8 = new HistoricPlaceDao();
-        activityPlace_6.setDescription("lapakahi historical park");
-        activityPlace_6.setX_axis(20.174977);
-        activityPlace_6.setY_axis(-155.8990697);
-        activityPlace_6.setComfort(25);
+        activityPlace_8.setDescription("lapakahi historical park");
+        activityPlace_8.setX_axis(20.174977);
+        activityPlace_8.setY_axis(-155.8990697);
+        activityPlace_8.setComfort(25);
 
         TouristicSiteDao activityPlace_9 = new ActivityPlaceDao();
-        activityPlace_6.setDescription("hanauma bay");
-        activityPlace_6.setX_axis(19.2552451);
-        activityPlace_6.setY_axis(-155.3057676);
-        activityPlace_6.setComfort(30);
+        activityPlace_9.setDescription("hanauma bay");
+        activityPlace_9.setX_axis(19.2552451);
+        activityPlace_9.setY_axis(-155.3057676);
+        activityPlace_9.setComfort(30);
 
         TouristicSiteDao activityPlace_10 = new ActivityPlaceDao();
-        activityPlace_6.setDescription("south point cliff dive");
-        activityPlace_6.setX_axis(18.914793);
-        activityPlace_6.setY_axis(-155.68309);
-        activityPlace_6.setComfort(30);
+        activityPlace_10.setDescription("south point cliff dive");
+        activityPlace_10.setX_axis(18.914793);
+        activityPlace_10.setY_axis(-155.68309);
+        activityPlace_10.setComfort(30);
 
         TouristicSiteDao activityPlace_11 = new ActivityPlaceDao();
-        activityPlace_6.setDescription("kau forest reserve");
-        activityPlace_6.setX_axis(19.1619495);
-        activityPlace_6.setY_axis(-155.6431842);
-        activityPlace_6.setComfort(35);
+        activityPlace_11.setDescription("kau forest reserve");
+        activityPlace_11.setX_axis(19.1619495);
+        activityPlace_11.setY_axis(-155.6431842);
+        activityPlace_11.setComfort(35);
 
         TouristicSiteDao activityPlace_12 = new ActivityPlaceDao();
-        activityPlace_6.setDescription("kipahoehoe");
-        activityPlace_6.setX_axis(19.276093);
-        activityPlace_6.setY_axis(-155.8500081);
-        activityPlace_6.setComfort(30);
+        activityPlace_12.setDescription("kipahoehoe");
+        activityPlace_12.setX_axis(19.276093);
+        activityPlace_12.setY_axis(-155.8500081);
+        activityPlace_12.setComfort(30);
 
         TouristicSiteDao activityPlace_13 = new HistoricPlaceDao();
-        activityPlace_6.setDescription("pu uhonua o honaunau");
-        activityPlace_6.setX_axis(19.4213948);
-        activityPlace_6.setY_axis(-155.9111015);
-        activityPlace_6.setComfort(50);
+        activityPlace_13.setDescription("pu uhonua o honaunau");
+        activityPlace_13.setX_axis(19.4213948);
+        activityPlace_13.setY_axis(-155.9111015);
+        activityPlace_13.setComfort(50);
 
 
 
@@ -171,6 +171,7 @@ public class DatabaseFiller {
         boat.setPrice(25);
 
         Transaction transaction = session.beginTransaction();
+
         session.persist(activityPlace_1);
         session.persist(activityPlace_2);
         session.persist(activityPlace_3);
@@ -194,7 +195,6 @@ public class DatabaseFiller {
         session.persist(hotel_8);
 
         session.persist(bus);
-        //Annoying warning but effective behavior
         session.persist(boat);
 
         transaction.commit();
