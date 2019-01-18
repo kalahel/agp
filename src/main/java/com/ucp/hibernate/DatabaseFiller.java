@@ -96,7 +96,35 @@ public class DatabaseFiller {
         activityPlace_13.setY_axis(-155.9111015);
         activityPlace_13.setComfort(50);
 
+        TouristicSiteDao activityPlace_14 = new ActivityPlaceDao();
+        activityPlace_14.setDescription("little volcano in the forest");
+        activityPlace_14.setX_axis(19.276093);
+        activityPlace_14.setY_axis(-155.9111015);
+        activityPlace_14.setComfort(25);
 
+        TouristicSiteDao activityPlace_15 = new ActivityPlaceDao();
+        activityPlace_15.setDescription("great endemic forest");
+        activityPlace_15.setX_axis(19.1619495);
+        activityPlace_15.setY_axis(-155.9111015);
+        activityPlace_15.setComfort(25);
+
+        TouristicSiteDao activityPlace_16 = new ActivityPlaceDao();
+        activityPlace_16.setDescription("natural reserve");
+        activityPlace_16.setX_axis(19.1619495);
+        activityPlace_16.setY_axis(-155.6431842);
+        activityPlace_16.setComfort(25);
+
+        TouristicSiteDao activityPlace_17 = new ActivityPlaceDao();
+        activityPlace_17.setDescription("lounge jazz bar");
+        activityPlace_17.setX_axis(18.914793);
+        activityPlace_17.setY_axis(-155.6431842);
+        activityPlace_17.setComfort(25);
+
+        TouristicSiteDao activityPlace_18 = new ActivityPlaceDao();
+        activityPlace_18.setDescription("hualahu nightclub");
+        activityPlace_18.setX_axis(19.2552451);
+        activityPlace_18.setY_axis(-155.9111015);
+        activityPlace_18.setComfort(25);
 
         HotelDao hotel_1 = HotelDao.builder()
                 .beach("wild seashore")
@@ -185,6 +213,12 @@ public class DatabaseFiller {
         session.persist(activityPlace_11);
         session.persist(activityPlace_12);
         session.persist(activityPlace_13);
+        session.persist(activityPlace_14);
+        session.persist(activityPlace_15);
+        session.persist(activityPlace_16);
+        session.persist(activityPlace_17);
+        session.persist(activityPlace_18);
+
         session.persist(hotel_1);
         session.persist(hotel_2);
         session.persist(hotel_3);
