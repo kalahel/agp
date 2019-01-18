@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class TouristicSite implements Comfort{
+public abstract class TouristicSite implements Comfort {
     protected String description;
     protected Coordinates coordinates;
     protected double comfort;

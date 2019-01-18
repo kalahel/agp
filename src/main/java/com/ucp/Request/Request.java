@@ -17,26 +17,26 @@ import java.util.List;
 
 public class Request {
 
-    public static List<TouristicSiteDao> getTouristicSitesFromUserCriterias(String criterias){
+    public static List<TouristicSiteDao> getTouristicSitesFromUserCriterias(String criterias) {
         ArrayList<TouristicSiteDao> result = new ArrayList<>();
         try {
             LuceneLauncher.indexDocuments();
             List<TouristicSiteJoined> resultJoin = SqlLuceneJoin.sqlJoinLucene("", criterias);
-            for(TouristicSiteJoined site : resultJoin){
+            for (TouristicSiteJoined site : resultJoin) {
                 result.add(site.getTouristicSiteDao());
             }
-        }catch (IOException | ParseException e) {
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         return result;
     }
 
-    public static List<HotelDao> getHotelsFromUserCriterias(int comfort){
+    public static List<HotelDao> getHotelsFromUserCriterias(int comfort) {
 
         int requestSuperiorLimit = (comfort * 20) + 20;
-        int resquestInferiorLimit = (comfort * 20) -10;
+        int resquestInferiorLimit = (comfort * 20) - 10;
         List<HotelDao> results = null;
-        String whereCondition = "WHERE comfort BETWEEN "+resquestInferiorLimit +" AND " +requestSuperiorLimit;
+        String whereCondition = "WHERE comfort BETWEEN " + resquestInferiorLimit + " AND " + requestSuperiorLimit;
 
         DBConnection dbConnection = new DBConnection();
         Session session = dbConnection.getSessionFactory().getCurrentSession();
@@ -48,7 +48,7 @@ public class Request {
         return results;
     }
 
-    public static List<TransportDao> getTransports(){
+    public static List<TransportDao> getTransports() {
         List<TransportDao> results = null;
         DBConnection dbConnection = new DBConnection();
         Session session = dbConnection.getSessionFactory().getCurrentSession();

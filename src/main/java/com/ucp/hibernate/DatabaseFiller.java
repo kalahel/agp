@@ -1,9 +1,6 @@
 package com.ucp.hibernate;
 
-import com.ucp.SqlIterator;
 import com.ucp.SqlLauncher;
-import com.ucp.business.data.Model.HistoricPlace;
-import com.ucp.business.data.Model.TouristicSite;
 import com.ucp.dao.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -235,6 +232,6 @@ public class DatabaseFiller {
         session.close();
 
 
-        }
-
     }
+
+}

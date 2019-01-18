@@ -1,8 +1,7 @@
 package com.ucp.business.data;
 
 import com.ucp.business.data.Model.*;
-
-import org.junit.*;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -133,6 +132,7 @@ public class TestData {
             System.err.println("[Error : getDistanceFromGeoCoordinatesWithCoord]: ");
         }
     }
+
     @Test
     public void getDistanceFromGeoCoordinatesWithLatLongTest() throws Exception {
         try {
@@ -146,9 +146,9 @@ public class TestData {
             double dlat = (startingCoord.getX_axis() - arrivalCoord.getX_axis()) * degrees2radian;
 
             double result = Math.pow(Math.sin(dlat / 2.0), 2)
-                        + Math.cos(arrivalCoord.getX_axis() * degrees2radian)
-                        * Math.cos(startingCoord.getX_axis() * degrees2radian)
-                        * Math.pow(Math.sin(dlong / 2.0), 2);
+                    + Math.cos(arrivalCoord.getX_axis() * degrees2radian)
+                    * Math.cos(startingCoord.getX_axis() * degrees2radian)
+                    * Math.pow(Math.sin(dlong / 2.0), 2);
 
             result = 2 * Math.atan2(Math.sqrt(result), Math.sqrt(1 - result));
             result = 6367 * result;

@@ -1,18 +1,13 @@
 package com.ucp.business.data;
 
 import com.ucp.SqlIterator;
-
-import com.ucp.business.data.Model.TouristicSite;
 import com.ucp.dao.HistoricPlaceDao;
 import com.ucp.dao.TouristicSiteDao;
-
 import com.ucp.hibernate.DBConnection;
-
 import org.hibernate.Session;
-
 import org.hibernate.Transaction;
-
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class sqlLauncherTest {
@@ -36,10 +31,10 @@ public class sqlLauncherTest {
             SqlIterator sqlIterator = new SqlIterator();
             TouristicSiteDao touristicSite = new HistoricPlaceDao();
             sqlIterator.init("where description='Caverne du Gange'");
-            while (sqlIterator.hasNext()){
+            while (sqlIterator.hasNext()) {
                 touristicSite = sqlIterator.next();
             }
-            assertEquals(touristicSite,historicPlaceDao);
+            assertEquals(touristicSite, historicPlaceDao);
 
             Session session1 = dbConnection.getSessionFactory().getCurrentSession();
             Transaction transaction1 = session1.beginTransaction();

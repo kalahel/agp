@@ -11,8 +11,9 @@ public class ExampleBean {
     private String hello = "No Hello initialized";
 
     public String getMessage() {
-        return(message);
+        return (message);
     }
+
     public void setMessage(String message) {
         this.message = message;
     }

@@ -1,6 +1,9 @@
 package com.ucp.business.data.Model;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 @Data
 @RequiredArgsConstructor
@@ -13,10 +16,10 @@ public class ActivityPlace extends TouristicSite {
 
     @Override
     public double returnScaledComfort() {
-        if(this.getComfort() < 20) return 1;
-        if(this.getComfort() < 40) return 2;
-        if(this.getComfort() < 60) return 3;
-        if(this.getComfort() < 80) return 4;
+        if (this.getComfort() < 20) return 1;
+        if (this.getComfort() < 40) return 2;
+        if (this.getComfort() < 60) return 3;
+        if (this.getComfort() < 80) return 4;
         else return 5;
     }
 }

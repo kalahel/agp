@@ -18,14 +18,14 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HotelDao {
-    @Id
-    @GeneratedValue
-    int id;
     protected double price;
     protected double longitude;
     protected double latitude;
     protected String beach;
     protected double comfort;
+    @Id
+    @GeneratedValue
+    int id;
 
     public HotelDao(Hotel hotel) {
         this.price = hotel.getPrice();

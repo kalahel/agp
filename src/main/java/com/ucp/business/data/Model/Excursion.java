@@ -1,6 +1,9 @@
 package com.ucp.business.data.Model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,7 +66,7 @@ public class Excursion {
 
         public ExcursionBuilder computePrice() {
 
-            if(touristicSites.size() == 0 ) return this;
+            if (touristicSites.size() == 0) return this;
 
             double prix = this.hotel.getPrice();
 
@@ -93,7 +96,7 @@ public class Excursion {
         }
 
         public ExcursionBuilder computeComfort() {
-            if(touristicSites.size() == 0) return this;
+            if (touristicSites.size() == 0) return this;
             double comfort = 0.0;
             for (Transport transport : transports) {
                 comfort += transport.getComfort();

@@ -2,15 +2,11 @@ package com.ucp.view.consoleInteractor;
 
 import com.ucp.PropositionEngine.PropositionCriterias;
 import com.ucp.PropositionEngine.PropositionEngine;
-import com.ucp.Request.Request;
 import com.ucp.business.data.Model.Stay;
-import com.ucp.dao.HotelDao;
-import com.ucp.dao.TouristicSiteDao;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 import java.util.Scanner;
 
 public class consoleUserInteractor {
@@ -99,7 +95,7 @@ public class consoleUserInteractor {
     public static void main(String[] args) {
         executeInterractor();
         executePropositor();
-        Stay stay =  PropositionEngine.computeProposition();
+        Stay stay = PropositionEngine.computeProposition();
         System.out.println(stay.toString());
     }
 }

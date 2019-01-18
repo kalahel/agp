@@ -2,7 +2,6 @@ package com.ucp.business.data;
 
 import com.ucp.business.data.Model.*;
 import org.junit.Test;
-import org.springframework.expression.spel.ast.NullLiteral;
 
 import static java.sql.Types.NULL;
 import static org.junit.Assert.assertEquals;
@@ -74,7 +73,7 @@ public class TestCompleteEngine {
             excursion.setHotel(SeaMountainCondo);
             excursion.computePrice();
 
-            Day day_test = new Day(4,excursion);
+            Day day_test = new Day(4, excursion);
 
             assertEquals(day_2, day_test);
 
@@ -115,7 +114,7 @@ public class TestCompleteEngine {
 
     @Test
     public void testComfort() throws Exception {
-        try{
+        try {
             double comfort = 0.0;
 
             if (day_2.getExcursion() == null) comfort = 0.0;
@@ -128,8 +127,8 @@ public class TestCompleteEngine {
                 comfort += t.getComfort() * factorOfComfort;
             }
             comfort += day_2.getExcursion().getComfort() + day_2.getExcursion().getHotel().getComfort();
-        }catch (Exception e){
-            System.err.println("[Error : Comfort]: "+e);
+        } catch (Exception e) {
+            System.err.println("[Error : Comfort]: " + e);
         }
     }
 

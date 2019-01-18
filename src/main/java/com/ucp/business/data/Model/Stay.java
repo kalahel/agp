@@ -1,6 +1,9 @@
 package com.ucp.business.data.Model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,15 +36,15 @@ public class Stay {
             return this;
         }
 
-        public StayBuilder computeComfort(){
+        public StayBuilder computeComfort() {
             for (Day day : this.daysList) {
-                if(day.getExcursion() != null){
+                if (day.getExcursion() != null) {
                     this.comfort += day.getComfort();
-                }else{
+                } else {
                     this.comfort += this.hotel.getComfort() * 2;
                 }
             }
-            this.comfort=comfort/this.daysList.size() * 2;
+            this.comfort = comfort / this.daysList.size() * 2;
             return this;
         }
 
