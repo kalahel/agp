@@ -21,7 +21,7 @@ public class Request {
         ArrayList<TouristicSiteDao> result = new ArrayList<>();
         try {
             LuceneLauncher.indexDocuments();
-            List<TouristicSiteJoined> resultJoin = SqlLuceneJoin.sqlJoinLucene("", "volcano mountain village canyon");
+            List<TouristicSiteJoined> resultJoin = SqlLuceneJoin.sqlJoinLucene("", criterias);
             for(TouristicSiteJoined site : resultJoin){
                 result.add(site.getTouristicSiteDao());
             }

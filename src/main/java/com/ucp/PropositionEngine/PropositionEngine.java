@@ -31,50 +31,50 @@ public class PropositionEngine {
     }
 
     private static void retrievePropositionFromDatabase() {
-        logger.error("ENTERING retrievePropositionFromDatabase :");
-        logger.error("collecting hotels from proposition");
+        logger.debug("ENTERING retrievePropositionFromDatabase :");
+        logger.debug("collecting hotels from proposition");
         hotels = new ArrayList<>(Request.getHotelsFromUserCriterias(proposition.getComfort()));
-        logger.error("collecting sites from proposition");
+        logger.debug("collecting sites from proposition");
         sites = new ArrayList<>(Request.getTouristicSitesFromUserCriterias(proposition.getCriterias()));
-        logger.error("collecting transports from proposition");
+        logger.debug("collecting transports from proposition");
         transports = new ArrayList<>(Request.getTransports());
-        logger.error("sites : " + sites.toString());
-        logger.error("sites : " + sites.size());
+        logger.debug("sites : " + sites.toString());
+        logger.debug("sites : " + sites.size());
     }
 
     private static ArrayList<TouristicSiteDao> selectActivities() {
-        logger.error("ENTERING selectActivities :");
+        logger.debug("ENTERING selectActivities :");
         ArrayList<TouristicSiteDao> subset = new ArrayList<>();
         try {
-            logger.error("Trying to build subset");
+            logger.debug("Trying to build subset");
             subset = new ArrayList<>(sites.subList(0, proposition
                     .getAverageActivitiesPerDay() * (proposition
                     .getStayDuration() - proposition
                     .getChillDays())));
-            logger.error("Subset built : " + subset.toString());
+            logger.debug("Subset built : " + subset.toString());
         } catch (IndexOutOfBoundsException e) {
             //e.printStackTrace();
-            System.out.println("IL NY A PAS ASSEZ");
+            System.out.println("nombre de TouristicSites inssufisant");
         }
-        logger.error("Returning subset");
+        logger.debug("Returning subset");
         return subset;
     }
 
     private static Stay findValidStayFromList(ArrayList<Stay> stays) {
-        logger.error("ENTERING findValidStayFromList");
+        logger.debug("ENTERING findValidStayFromList");
         double priceGap = 0.0;
         double comfortGap = 0.0;
-        logger.error("Iterating over stays list of size = " + stays.size());
+        logger.debug("Iterating over stays list of size = " + stays.size());
         for (Stay stay : stays) {
             priceGap = proposition.getMaxBudget() - stay.getPrice();
             comfortGap = proposition.getComfort() - stay.getComfort();
             if (priceGap > 0 && comfortGap < 0) {
-                logger.error("returning valid stay : " + stay.toString());
+                logger.debug("returning valid stay : " + stay.toString());
                 return stay;
             }
 
         }
-        logger.error("No stay found, returning null");
+        logger.debug("No stay found, returning null");
         return null;
     }
 
@@ -83,9 +83,9 @@ public class PropositionEngine {
         LinkedList<TouristicSiteDao> siteQueue = new LinkedList<>();
 
 
-        logger.error("ENTERING computeMostOptimalStay");
+        logger.debug("ENTERING computeMostOptimalStay");
         ArrayList<Stay> stays = new ArrayList<>();
-        logger.error("Iterating over hotel list");
+        logger.debug("Iterating over hotel list");
         for (HotelDao hotel : hotels) {
 
             for (TouristicSiteDao touristicSiteDao :

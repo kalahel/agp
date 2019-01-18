@@ -1,6 +1,8 @@
 package com.ucp;
 
 import com.ucp.configuration.ConfigurationEntry;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
@@ -23,6 +25,8 @@ import java.nio.file.Path;
  */
 public class LuceneLauncher {
 
+    final static Logger logger = LogManager.getLogger(LuceneLauncher.class);
+
     public static void main(String[] args) {
         System.out.println("Working Directory = " + System.getProperty("user.dir"));
         try {
@@ -35,7 +39,7 @@ public class LuceneLauncher {
         try {
             luceneIterator.init("volcano");
             while (luceneIterator.hasNext())
-                System.out.println(luceneIterator.next().toString());
+                logger.trace(luceneIterator.next().toString());
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
