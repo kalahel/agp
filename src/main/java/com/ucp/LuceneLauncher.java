@@ -28,7 +28,6 @@ public class LuceneLauncher {
     final static Logger logger = LogManager.getLogger(LuceneLauncher.class);
 
     public static void main(String[] args) {
-        System.out.println("Working Directory = " + System.getProperty("user.dir"));
         try {
             LuceneLauncher.indexDocuments();
         } catch (IOException e) {
@@ -39,7 +38,7 @@ public class LuceneLauncher {
         try {
             luceneIterator.init("volcano");
             while (luceneIterator.hasNext())
-                logger.trace(luceneIterator.next().toString());
+                logger.trace("volcano result : " + luceneIterator.next().toString());
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
@@ -54,7 +53,7 @@ public class LuceneLauncher {
     public static void indexDocuments() throws IOException {
 
         Analyzer analyseur = new StandardAnalyzer();
-
+        System.out.println(ConfigurationEntry.RELATIVE_INDEX_PATH);
         Path indexpath = FileSystems.getDefault().getPath(ConfigurationEntry.RELATIVE_INDEX_PATH);
         Directory index = FSDirectory.open(indexpath);
 
