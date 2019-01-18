@@ -30,7 +30,7 @@ public class DatabaseFiller {
         activityPlace_2.setY_axis(-159.661238);
         activityPlace_2.setComfort(15);
 
-        TouristicSiteDao activityPlace_3 = new ActivityPlaceDao();
+        TouristicSiteDao activityPlace_3 = new HistoricPlaceDao();
         activityPlace_3.setDescription("volcano village");
         activityPlace_3.setX_axis(19.444224);
         activityPlace_3.setY_axis(-155.230330);
@@ -53,6 +53,50 @@ public class DatabaseFiller {
         activityPlace_6.setX_axis(20.0850956);
         activityPlace_6.setY_axis(-155.7189817);
         activityPlace_6.setComfort(5);
+
+        TouristicSiteDao activityPlace_7 = new ActivityPlaceDao();
+        activityPlace_6.setDescription("halaula");
+        activityPlace_6.setX_axis(20.2298897);
+        activityPlace_6.setY_axis(-155.7998821);
+        activityPlace_6.setComfort(25);
+
+        TouristicSiteDao activityPlace_8 = new HistoricPlaceDao();
+        activityPlace_6.setDescription("lapakahi historical park");
+        activityPlace_6.setX_axis(20.174977);
+        activityPlace_6.setY_axis(-155.8990697);
+        activityPlace_6.setComfort(25);
+
+        TouristicSiteDao activityPlace_9 = new ActivityPlaceDao();
+        activityPlace_6.setDescription("hanauma bay");
+        activityPlace_6.setX_axis(19.2552451);
+        activityPlace_6.setY_axis(-155.3057676);
+        activityPlace_6.setComfort(30);
+
+        TouristicSiteDao activityPlace_10 = new ActivityPlaceDao();
+        activityPlace_6.setDescription("south point cliff dive");
+        activityPlace_6.setX_axis(18.914793);
+        activityPlace_6.setY_axis(-155.68309);
+        activityPlace_6.setComfort(30);
+
+        TouristicSiteDao activityPlace_11 = new ActivityPlaceDao();
+        activityPlace_6.setDescription("kau forest reserve");
+        activityPlace_6.setX_axis(19.1619495);
+        activityPlace_6.setY_axis(-155.6431842);
+        activityPlace_6.setComfort(35);
+
+        TouristicSiteDao activityPlace_12 = new ActivityPlaceDao();
+        activityPlace_6.setDescription("kipahoehoe");
+        activityPlace_6.setX_axis(19.276093);
+        activityPlace_6.setY_axis(-155.8500081);
+        activityPlace_6.setComfort(30);
+
+        TouristicSiteDao activityPlace_13 = new HistoricPlaceDao();
+        activityPlace_6.setDescription("pu uhonua o honaunau");
+        activityPlace_6.setX_axis(19.4213948);
+        activityPlace_6.setY_axis(-155.9111015);
+        activityPlace_6.setComfort(50);
+
+
 
         HotelDao hotel_1 = HotelDao.builder()
                 .beach("wild seashore")
@@ -118,30 +162,6 @@ public class DatabaseFiller {
                 .price(1000)
                 .build();
 
-        HotelDao hotel_9 = HotelDao.builder()
-                .beach("pauoa bay")
-                .comfort(60)
-                .latitude(19.9507468)
-                .longitude(-155.8656309)
-                .price(371)
-                .build();
-
-        HotelDao hotel_10 = HotelDao.builder()
-                .beach("pauoa bay")
-                .comfort(60)
-                .latitude(19.9507468)
-                .longitude(-155.8656309)
-                .price(371)
-                .build();
-
-        HotelDao hotel_11 = HotelDao.builder()
-                .beach("pauoa bay")
-                .comfort(60)
-                .latitude(19.9507468)
-                .longitude(-155.8656309)
-                .price(371)
-                .build();
-
         TransportDao bus = new BusDao();
         bus.setComfort(1);
         bus.setPrice(3);
@@ -157,9 +177,21 @@ public class DatabaseFiller {
         session.persist(activityPlace_4);
         session.persist(activityPlace_5);
         session.persist(activityPlace_6);
+        session.persist(activityPlace_7);
+        session.persist(activityPlace_8);
+        session.persist(activityPlace_9);
+        session.persist(activityPlace_10);
+        session.persist(activityPlace_11);
+        session.persist(activityPlace_12);
+        session.persist(activityPlace_13);
         session.persist(hotel_1);
         session.persist(hotel_2);
         session.persist(hotel_3);
+        session.persist(hotel_4);
+        session.persist(hotel_5);
+        session.persist(hotel_6);
+        session.persist(hotel_7);
+        session.persist(hotel_8);
 
         session.persist(bus);
         //Annoying warning but effective behavior
