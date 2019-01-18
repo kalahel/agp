@@ -1,3 +1,4 @@
+
 legend{
     margin-left: 10%;
     padding-left: 5%;
@@ -8,6 +9,36 @@ legend{
     font-size: 25px;
 }
 
-fieldset{
-    padding-left: 5px;
+.stay {
+    background-color: rgb(247, 247, 247);
+    border: 1px rgb(230, 230, 230) solid;
+    border-radius: 13px;
+}
+
+.stay p {
+    padding-left: 1%;
+    margin-left: 1%;
+    display: block;
+    width: 100%;
+    background: transparent;
+    font-family: Montserrat-Regular;
+    font-size: 18px;
+    color: #555555;
+    line-height: 1.2;
+    padding-right: 15px;
+}
+
+.stay ul {
+    padding-left: 2%;
+    margin-left: 2%;
+    margin-bottom: 1%;
+    padding-bottom: 1%;
+    display: block;
+    width: 100%;
+    background: transparent;
+    font-family: Montserrat-Regular;
+    font-size: 18px;
+    color: #555555;
+    line-height: 1.2;
+    padding-right: 15px;
 }
