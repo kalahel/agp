@@ -1,12 +1,7 @@
 package com.ucp.business.data.Model.Tests;
 
-import com.ucp.Launcher;
 import com.ucp.business.data.Model.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.mysql.cj.conf.PropertyKey.logger;
 import static java.sql.Types.NULL;
 
 public class CompleteEngineTest {

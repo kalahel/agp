@@ -26,8 +26,7 @@ public class DBConnection {
 
 
         // Mapping classes
-        this.configuration = new Configuration().
-                addAnnotatedClass(PlaceHolderDataStorable.class)
+        this.configuration = new Configuration()
                 .addAnnotatedClass(TouristicSiteDao.class)
                 .addAnnotatedClass(ActivityPlaceDao.class)
                 .addAnnotatedClass(HistoricPlaceDao.class)
@@ -38,7 +37,6 @@ public class DBConnection {
                 .configure();
 
         Metadata metadata = new MetadataSources(standardRegistry)
-                .addAnnotatedClass(PlaceHolderDataStorable.class)
                 .addAnnotatedClass(TouristicSiteDao.class)
                 .addAnnotatedClass(ActivityPlaceDao.class)
                 .addAnnotatedClass(HistoricPlaceDao.class)
